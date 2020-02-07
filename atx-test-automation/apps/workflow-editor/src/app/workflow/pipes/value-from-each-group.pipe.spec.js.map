@@ -1,0 +1,1 @@
+{"version":3,"file":"value-from-each-group.pipe.spec.js","sourceRoot":"","sources":["value-from-each-group.pipe.spec.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,sBAAsB,EAAE,MAAM,8BAA8B,CAAC;AAEtE,QAAQ,CAAC,wBAAwB,EAAE;IACjC,EAAE,CAAC,oBAAoB,EAAE;QACvB,IAAM,IAAI,GAAG,IAAI,sBAAsB,EAAE,CAAC;QAC1C,MAAM,CAAC,IAAI,CAAC,CAAC,UAAU,EAAE,CAAC;IAC5B,CAAC,CAAC,CAAC;AACL,CAAC,CAAC,CAAC"}

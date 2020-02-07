@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="10" time="264.583">
+ <testsuite name="19583: Performance Analyst -Charts" timestamp="2020-01-13T20:45:09" hostname="localhost" time="264.583" errors="0" tests="10" skipped="0" disabled="0" failures="0">
+  <testcase classname="19583: Performance Analyst -Charts" name="Step 1: Verify multiple trends load in drop down menu" time="10.538" />
+  <testcase classname="19583: Performance Analyst -Charts" name="Step 2: Change time range to less than 4 days and verify switch to higher frequency data" time="17.599" />
+  <testcase classname="19583: Performance Analyst -Charts" name="Step 3: Change time range with handles and by typing date range in calendar" time="6.539" />
+  <testcase classname="19583: Performance Analyst -Charts" name="Step 4: Change scale of axes, click ok, verify" time="28.518" />
+  <testcase classname="19583: Performance Analyst -Charts" name="Step 5: Change scale of axes back to auto, click ok, verify" time="9.376" />
+  <testcase classname="19583: Performance Analyst -Charts" name="Step 6: Verify Hamburger Chart button exists and functions as desired- save chart as all 4 types and print preview" time="31.118" />
+  <testcase classname="19583: Performance Analyst -Charts" name="Step 7: Download data to excel" time="51.88" />
+  <testcase classname="19583: Performance Analyst -Charts" name="Step 8: Expand chart to full screen" time="14.181" />
+  <testcase classname="19583: Performance Analyst -Charts" name="Step 9: Verify &quot;click and drag&quot; zoom works properly " time="9.144" />
+  <testcase classname="19583: Performance Analyst -Charts" name="Step 10: Click on chart editor button and verify that it navigates to correct chart and time range" time="48.425" />
+ </testsuite>
+</testsuites>

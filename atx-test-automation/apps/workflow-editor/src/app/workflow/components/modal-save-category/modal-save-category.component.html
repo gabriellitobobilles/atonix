@@ -1,0 +1,47 @@
+<div class="dialog-modal">
+  <div mat-dialog-title>Update Workflow Category</div>
+  <div mat-dialog-content class="dialog-modal">
+    <ng-container *ngIf="data.resolutionStatuses.length > 0">
+      You have deleted the following Resolution Status<span *ngIf="data.resolutionStatuses.length > 1">es</span>:
+      <mat-list>
+        <mat-list-item style="color: black" *ngFor="let status of data.resolutionStatuses">{{ status.name }}</mat-list-item>
+      </mat-list>
+      If Issues are found to be in this Resolution Status, they should be placed in:
+      <div class="select-settings">
+        <select
+          class="narrow-select"
+          (change)="onChangeDefaultResolutionStatus($event.target.value)"
+          [value]="data.defaultResolutionStatus"
+        >
+          <option *ngFor="let resStatus of data.currentResolutionStatuses" [value]="resStatus.id">{{ resStatus.name }}</option>
+        </select>
+      </div>
+    </ng-container>
+    <br />
+    <ng-container *ngIf="data.assetClassTypeChanges; else: noAssetChanges">
+      Changing the asset class type can cause existing Issue Items to become invalid. Are you sure you want to make this change?
+    </ng-container>
+    <ng-template #noAssetChanges> <div>Confirm Saving Changes?</div> </ng-template>
+  </div>
+  <br />
+
+  <mat-dialog-actions>
+    <span class="right-justify"></span>
+    <button
+      mat-raised-button
+      (click)="saveCategory()"
+      [color]="data.assetClassTypeChanges || data.resolutionStatuses.length > 0 ? 'warn' : 'accent'"
+      class="mat-elevation-z1"
+    >
+      Ok
+    </button>
+    <button
+      mat-raised-button
+      [mat-dialog-close]="false"
+      [color]="data.assetClassTypeChanges || data.resolutionStatuses.length > 0 ? 'primary' : 'warn'"
+      class="mat-elevation-z1"
+    >
+      Cancel
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,36 @@
+<ng-container *ngIf="(summaryCharts$ | async) && (pending$ | async) === false; else: loading">
+  <div class="summary-charts container-fluid">
+    <div class="row">
+      <div class="col-md-4 col-12 col-lg-3 no-padding no-margin" style="height: 200px;">
+        <atx-donut-chart
+          [highCharts]="Highcharts"
+          [donutChart]="alertsChart"
+          [categories]="(summaryCharts$ | async).activeAlertsCount"
+        ></atx-donut-chart>
+      </div>
+      <div class="col-md-4 col-12 col-lg-3 no-padding no-margin" style="height: 200px;">
+        <atx-donut-chart
+          [highCharts]="Highcharts"
+          [donutChart]="issuesChart"
+          [categories]="(summaryCharts$ | async).issuesCount"
+        ></atx-donut-chart>
+      </div>
+      <div class="col-md-4 col-12 col-lg-3 no-padding no-margin" style="height: 200px;">
+        <atx-donut-chart
+          [highCharts]="Highcharts"
+          [donutChart]="impactsChart"
+          [categories]="(summaryCharts$ | async).impactTotal"
+        ></atx-donut-chart>
+      </div>
+      <div class="col-md-4 col-12 col-lg-3 no-padding no-margin" style="height:200px; overflow-y:auto; overflow-x:hidden;">
+        <div class="legend-row" *ngFor="let legend of (summaryCharts$ | async).legend">
+          <div class="line-legend" [ngStyle]="legend.style"></div>
+          <div class="line-text">{{ legend.assetDesc }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #loading>
+  <mat-progress-bar color="accent" id="asset360-progress-bar" mode="indeterminate"></mat-progress-bar>
+</ng-template>

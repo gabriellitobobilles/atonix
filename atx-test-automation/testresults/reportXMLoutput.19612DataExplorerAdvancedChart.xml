@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="14" time="169.101">
+ <testsuite name="19612: Data Explorer - Advanced Chart" timestamp="2020-01-13T21:10:05" hostname="localhost" time="169.101" errors="0" tests="14" skipped="0" disabled="0" failures="0">
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 1:  Ensure Advanced chart can be selected from Add chart list." time="59.745" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 2:  On series tab verify the group by feature." time="15.482" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 3: Ensure user is able to select Display as options &amp; create a chart accordingly." time="0.798" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 4: Verfiy the Chart type feature." time="1.378" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 5: Ensure Add Measurement." time="3.54" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 6: Ensure Chart filter Advanced options" time="3.128" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 7: Verify Series settings" time="1.416" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 8: Ensure series filter" time="0.708" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 9: Verify delete measurement." time="0.451" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 10: Ensure user is able to select Data Retrieval Method." time="7.635" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 11: Verify Add Pin feature" time="3.251" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 12: Ensure user is able to add different types of pins." time="2.335" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 13: Ensure hide pin." time="0.866" />
+  <testcase classname="19612: Data Explorer - Advanced Chart" name="Step 14: Ensure delete pin." time="23.651" />
+ </testsuite>
+</testsuites>

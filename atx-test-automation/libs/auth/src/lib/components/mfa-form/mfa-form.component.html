@@ -1,0 +1,21 @@
+<mat-card class="white-card">
+  <mat-card-title>Provide Multi-Factor Authentication Code</mat-card-title>
+  <mat-card-content>
+    <div *ngIf="isSoftwareToken; else: softwareTokenElseBlock">Input code from token generator.</div>
+    <ng-template #softwareTokenElseBlock><div>Input code from SMS Message.</div></ng-template>
+    <br />
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <p>
+        <mat-form-field>
+          <mat-placeholder class="placeholder">Multi-Factor Authentication Code</mat-placeholder>
+          <input type="text" matInput formControlName="code" />
+          <fa-icon matSuffix [icon]="faCode"></fa-icon>
+        </mat-form-field>
+      </p>
+
+      <p *ngIf="errorMessage" class="loginError">{{ errorMessage }}</p>
+
+      <p class="loginButtons"><button class="mat-elevation-z1" type="submit" mat-button>Login</button></p>
+    </form>
+  </mat-card-content>
+</mat-card>

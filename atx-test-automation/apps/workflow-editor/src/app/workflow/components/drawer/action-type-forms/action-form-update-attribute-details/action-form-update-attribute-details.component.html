@@ -1,0 +1,23 @@
+<div [formGroup]="workflowForm">
+  <div class="select-settings update-attribute-inputs">
+    <label>Attribute Name:</label>
+    <ng-container *ngIf="formState !== WorkflowFormStateType.Viewing; else: viewingFormAttributeList">
+      <input type="text" placeholder="Attribute Name" formControlName="attributeName" />
+      <mat-error class="invalid" *ngIf="showValidationMessages && errors['attributeName']">
+        {{ errors['attributeName'] }}
+      </mat-error>
+    </ng-container>
+    <ng-template #viewingFormAttributeList> {{ workflowForm.get('attributeName').value }} </ng-template>
+  </div>
+  <div class="select-settings update-attribute-inputs">
+    <label>Attribute Value:</label>
+
+    <ng-container *ngIf="formState !== WorkflowFormStateType.Viewing; else: viewingFormAttributeValue">
+      <input type="text" placeholder="Attribute Value" formControlName="attributeValue" />
+      <mat-error class="invalid" *ngIf="showValidationMessages && errors['attributeValue']">
+        {{ errors['attributeValue'] }}
+      </mat-error>
+    </ng-container>
+    <ng-template #viewingFormAttributeValue> {{ workflowForm.get('attributeValue').value }} </ng-template>
+  </div>
+</div>

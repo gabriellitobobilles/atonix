@@ -1,0 +1,21 @@
+@import 'libs/assets/src/material-styles/general.scss';
+@import 'libs/layout/src/lib/layout.component.scss';
+@import 'libs/layout/src/lib/navbar/navbar.component.scss';
+@import '../app/asset360-app/asset360-app.component.scss';
+
+@mixin component-themes($material-theme, $atx-theme) {
+  $accent: map-get($material-theme, accent);
+  $background: map-get($material-theme, background);
+  .app-background {
+    background: mat-color($background, background);
+  }
+
+  // If you need to read variables use this:
+  // @debug $theme;
+  // Variables will be in the terminal only,
+  // they are not available in the Chrome Debugger
+  @include atx-layout-theme($material-theme, $atx-theme);
+  @include toolbar-theme($material-theme, $atx-theme);
+  @include general-theme($dark-material-theme, $dark-theme);
+  @include asset360-theme($dark-material-theme, $dark-theme);
+}

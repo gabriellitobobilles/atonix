@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="4" tests="16" time="316.727">
+ <testsuite name="19594: Performance Analyst - Map" timestamp="2020-01-13T20:56:34" hostname="localhost" time="316.727" errors="0" tests="16" skipped="0" disabled="0" failures="4">
+  <testcase classname="19594: Performance Analyst - Map" name="Step 1: Ensure map is loading." time="18.12" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 2: Verify Raster map. Make sure it should not take more than 10 seconds." time="3.386" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 3: Verify GeoVis map." time="4.15" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 4: Verify GeoSpa map." time="11.641" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 5: Ensure user is able to select different maps from drop down list." time="78.489">
+   <failure type="toEqual" message="Expected &apos;Voltage Violations&apos; to equal &apos;CEMI&apos;."><![CDATA[Error: Failed expectation
+    at Object.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec28_performanceAnalyst-Map.e2e-spec.ts:107:80)
+    at step (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at fulfilled (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:104:62)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)]]>
+   </failure>
+   <failure type="toEqual" message="Expected &apos;Outage Events&apos; to equal &apos;Voltage Violations&apos;."><![CDATA[Error: Failed expectation
+    at Object.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec28_performanceAnalyst-Map.e2e-spec.ts:107:80)
+    at step (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at fulfilled (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:104:62)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)]]>
+   </failure>
+   <failure type="toEqual" message="Expected &apos;Field Area Network&apos; to equal &apos;Outage Events&apos;."><![CDATA[Error: Failed expectation
+    at Object.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec28_performanceAnalyst-Map.e2e-spec.ts:107:80)
+    at step (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at fulfilled (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:104:62)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)]]>
+   </failure>
+   <failure type="toEqual" message="Expected &apos;Project Status 2&apos; to equal &apos;Field Area Network&apos;."><![CDATA[Error: Failed expectation
+    at Object.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec28_performanceAnalyst-Map.e2e-spec.ts:107:80)
+    at step (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at fulfilled (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:104:62)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)]]>
+   </failure>
+  </testcase>
+  <testcase classname="19594: Performance Analyst - Map" name="Step 6: Ensure multi select &amp; single select of asset on map is working." time="25.947" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 7: Ensure apply simple filter feature." time="10.925" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 8: Ensure user is able to save a new search in map." time="6.417" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 9: Ensure save new search with adding a category." time="6.614" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 10: Ensure Public &amp; private new search save feature." time="1.339" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 11: Ensure Clear feature in apply filter." time="21.116" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 12: Verify advanced filter feature." time="18.607" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 13: Verify base maps." time="23.374" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 14: Ensure map is loading with respect to time slider." time="1.153" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 15: Ensure Jump to feature." time="5.865" />
+  <testcase classname="19594: Performance Analyst - Map" name="Step 16: Verify zoom in &amp; zoom out feature." time="40.832" />
+ </testsuite>
+</testsuites>

@@ -1,0 +1,126 @@
+<div
+  id="navContainer"
+  class="trNavContainer"
+  (atxWatchElementSize)="SizeChanged($event)"
+  (mousedown)="Mousedown($event, '')"
+  (mouseup)="Mouseup($event)"
+  (mousemove)="Mousemove($event)"
+>
+  <svg class="trNav" height="100%" width="100%" preserveAspectRatio="none" x="0" y="0">
+    <line id="timesliderLeftCap" x1="0" x2="0" y1="0" [attr.y2]="Height" stroke="white" stroke-width="1"></line>
+    <line
+      id="timesliderRightCap"
+      [attr.x1]="Width"
+      [attr.x2]="Width"
+      y1="0"
+      [attr.y2]="Height"
+      stroke="white"
+      stroke-width="1"
+    ></line>
+    <rect
+      id="timesliderBackgroundBar"
+      x="0"
+      [attr.width]="Width"
+      [attr.y]="BarTop"
+      [attr.height]="BarHeight"
+      fill="#5EABDE"
+    ></rect>
+    <g id="timesliderDivisionsGroup" *ngFor="let division of Divisions" [attr.transform]="GetTransform(division.start)">
+      <line x1="0" x2="0" y1="0" [attr.y2]="BarTop" stroke="white" stroke-width="1"></line>
+      <text
+        *ngIf="division.text"
+        y="12"
+        [attr.x]="(division.end - division.start) / 2"
+        text-anchor="middle"
+        font-size="10px"
+        fill="white"
+        (mousedown)="SelectDivision($event, division)"
+        class="slider-section-text"
+        style="cursor:default;"
+      >
+        {{ division.text }}
+      </text>
+    </g>
+    <g id="timesliderNowMarker" [attr.transform]="GetTransform(NowMarkerPosition)" *ngIf="ShowNowMarker">
+      <line x1="0" x2="0" [attr.y1]="BarTop" [attr.y2]="Height" stroke="yellow" stroke-width="2" stroke-dasharray="5,5"></line>
+    </g>
+    <rect
+      id="navBar"
+      x="0"
+      [attr.width]="SelectionWidth"
+      [attr.y]="BarTop"
+      *ngIf="ShowSelection"
+      class="grabbable navBar"
+      [attr.height]="BarHeight"
+      [attr.transform]="GetTransform(SelectionStartPosition)"
+      (mousedown)="Mousedown($event, 'bar')"
+    ></rect>
+
+    <g
+      id="navIndicator"
+      [attr.transform]="GetTransform(IndicatorPosition)"
+      *ngIf="ShowIndicator"
+      class="move-horizonal show-label-on-hover"
+      (mousedown)="Mousedown($event, 'indicator')"
+    >
+      <line x1="0" x2="0" [attr.y1]="BarTop" [attr.y2]="Height" stroke="black" stroke-width="2"></line>
+      <g [attr.transform]="GetTransform(0, BarTop + (Height - BarTop) / 2)">
+        <circle cx="0" cy="0" r="6" fill="yellow" stroke="black" stroke-width="2" ng-non-bindable></circle>
+      </g>
+      <text
+        x="14"
+        [attr.y]="3 + BarTop + (Height - BarTop) / 2"
+        text-anchor="start"
+        font-size="12px"
+        fill="white"
+        style="pointer-events:none;"
+      >
+        {{ GetDateFromCoordinate(IndicatorPosition) | date: 'short' }}
+      </text>
+    </g>
+    <g
+      id="navStart"
+      [attr.transform]="GetTransform(SelectionStartPosition)"
+      *ngIf="ShowSelection"
+      class="move-horizonal show-label-on-hover"
+      (mousedown)="Mousedown($event, 'start')"
+    >
+      <line x1="0" x2="0" [attr.y1]="BarTop" [attr.y2]="Height" stroke="black" stroke-width="2"></line>
+      <g [attr.transform]="GetTransform(0, BarTop + (Height - BarTop) / 2)">
+        <circle cx="0" cy="0" r="6" fill="gray" stroke="black" stroke-width="2"></circle>
+      </g>
+      <text
+        x="10"
+        [attr.y]="BarTop + (Height - BarTop) / 2"
+        text-anchor="start"
+        font-size="10px"
+        fill="white"
+        style="pointer-events:none;"
+      >
+        {{ SelectionStart | date: 'short' }}
+      </text>
+    </g>
+    <g
+      id="navEnd"
+      [attr.transform]="GetTransform(Nudge(SelectionEndPosition))"
+      *ngIf="ShowSelection"
+      class="move-horizonal show-label-on-hover"
+      (mousedown)="Mousedown($event, 'end')"
+    >
+      <line x1="0" x2="0" [attr.y1]="BarTop" [attr.y2]="Height" stroke="black" stroke-width="2"></line>
+      <g [attr.transform]="GetTransform(0, BarTop + (Height - BarTop) / 2)">
+        <circle cx="0" cy="0" r="6" fill="gray" stroke="black" stroke-width="2" ng-non-bindable></circle>
+      </g>
+      <text
+        x="-10"
+        [attr.y]="BarTop + (Height - BarTop) / 2"
+        text-anchor="end"
+        font-size="10px"
+        fill="white"
+        style="pointer-events:none;"
+      >
+        {{ GetDateFromCoordinate(SelectionEnd) | date: 'short' }}
+      </text>
+    </g>
+  </svg>
+</div>

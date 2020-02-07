@@ -1,0 +1,21 @@
+<div class="overlay-content">
+  <div *ngIf="(selectedAppContext$ | async)">
+    <table class="currentAC">
+      <tr>
+        <td style="width:70px;">
+          <img src="./assets/icons/app-icons/{{ (selectedAppContext$ | async).Icon }}" style="width:60px;margin-left:19px" />
+        </td>
+        <td>
+          <h2>{{ (selectedAppContext$ | async)?.DisplayName }}</h2>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <mat-divider></mat-divider>
+  <div *ngFor="let app of (appContexts$ | async)">
+    <div id="{{ app?.AppContextID }}" class="appContextBlock" (click)="setAppContext(app)">
+      <img src="./assets/icons/app-icons/{{ app.Icon }}" />
+      <div class="test">{{ app?.DisplayName }}</div>
+    </div>
+  </div>
+</div>

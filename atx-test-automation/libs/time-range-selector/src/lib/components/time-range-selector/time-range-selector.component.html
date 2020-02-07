@@ -1,0 +1,56 @@
+<div id="timeRangeSelector" *ngIf="IsFullSize; else: timeRangeSelectorSmallBlock" class="trContainer noselect" cdk-overlay-origin>
+  <atx-range-slider
+    [RangeStart]="RangeStart$ | async"
+    [RangeEnd]="RangeEnd$ | async"
+    (MoveRange)="MoveRange($event)"
+    (ZoomRange)="ZoomRange($event)"
+  ></atx-range-slider>
+  <div class="trChoose" [ngClass]="{ doublebutton: Indicator && !HideSelection }">
+    <!-- Live Button -->
+    <atx-live-button> </atx-live-button>
+    <atx-time-incrementer
+      [ShowSelection]="ShowSelection$ | async"
+      (ShowPopup)="ShowPopup()"
+      (Step)="Step($event)"
+    ></atx-time-incrementer>
+    <atx-jump-to-list></atx-jump-to-list>
+    <!--
+      <div id="quicksearch" class="text-right" style="position: absolute;top: 7px;right: 0px;">
+        <div class="btn-group dropup">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <span class="no-touch">Jump to: </span>
+            <span class="touch"><i class="fa fa-ellipsis-v"></i></span>
+            <span class="caret no-touch"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+
+            <li *ngFor="let c of JumpToList ">
+              <a role="menuitem" tabindex="-1" *ngIf="GetFilter(c)" (click)="SelectTimeRangeCriteria(c.CoDFID)">
+                <span>{{c.CoTitle}}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <a href="" *ngIf="SearchText" title="Save" (click)="SaveQuickSearch(SelectedQuickSearch)" style="margin: 0px 10px;"
+          class="ng-hide"><i class="fa fa-button fa-floppy-o"></i></a>
+      </div>
+    -->
+  </div>
+
+  <atx-time-slider
+    [RangeStart]="RangeStart$ | async"
+    [RangeEnd]="RangeEnd$ | async"
+    [SelectionStart]="SelectionStart$ | async"
+    [SelectionEnd]="SelectionEnd$ | async"
+    [Indicator]="Indicator$ | async"
+    [NowMarker]="NowMarker$ | async"
+    [ShowIndicator]="ShowIndicator$ | async"
+    [ShowSelection]="ShowSelection$ | async"
+    [ShowNowMarker]="ShowNowMarker$ | async"
+    (SelectionChanged)="OnSelectionChanged($event)"
+    (ShowPopup)="ShowPopup()"
+  ></atx-time-slider>
+</div>
+<ng-template #timeRangeSelectorSmallBlock> SMALL!!!! </ng-template>

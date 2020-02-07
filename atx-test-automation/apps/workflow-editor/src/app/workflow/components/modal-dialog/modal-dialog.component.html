@@ -1,0 +1,47 @@
+<div class="dialog-modal">
+  <div mat-dialog-title>{{ data.title }}</div>
+  <div mat-dialog-content>{{ data.message }}</div>
+  <br />
+  <mat-progress-bar
+    *ngIf="(waitingOnAffectedIssues$ | async)"
+    id="asset360-progress-bar"
+    color="accent"
+    mode="indeterminate"
+  ></mat-progress-bar>
+
+  <ng-container *ngIf="dataSource.data !== null && dataSource.data.length > 0">
+    <table *ngIf="dataSource" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.IssueTitle }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="create-date">
+        <th mat-header-cell *matHeaderCellDef>Create Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.CreateDate | date: 'medium' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="change-date">
+        <th mat-header-cell *matHeaderCellDef>Change Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.ChangeDate | date: 'medium' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="resolution-status">
+        <th mat-header-cell *matHeaderCellDef>Resolution Status</th>
+        <td mat-cell *matCellDef="let element">{{ element.ResolutionStatus }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row style="cursor: pointer;" (click)="getIssue(row.GlobalID)" *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </ng-container>
+  <ng-container *ngIf="(affectedIssues$ | async) !== null && (affectedIssues$ | async).length === 0">
+    -- No Issues Found for Current Category --
+  </ng-container>
+  <br />
+  <mat-dialog-actions>
+    <span class="right-justify"></span>
+    <button mat-raised-button [mat-dialog-close]="true" color="warn" class="mat-elevation-z1">{{ data.yesTitle }}</button>
+    <button mat-raised-button [mat-dialog-close]="false" color="primary" class="mat-elevation-z1">{{ data.noTitle }}</button>
+  </mat-dialog-actions>
+</div>

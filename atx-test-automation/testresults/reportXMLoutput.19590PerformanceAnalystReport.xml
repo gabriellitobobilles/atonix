@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="6" time="224.176">
+ <testsuite name="19590: Performance Analyst - Report" timestamp="2020-01-13T20:52:28" hostname="localhost" time="224.176" errors="0" tests="6" skipped="2" disabled="0" failures="0">
+  <testcase classname="19590: Performance Analyst - Report" name="Step 1: Ensure report can be selected from drop down list." time="117.78" />
+  <testcase classname="19590: Performance Analyst - Report" name="Step 2: Verify Print feature of different sections of report" time="6.519" />
+  <testcase classname="19590: Performance Analyst - Report" name="Step 3: Verify download feature of different sections of report." time="14.916" />
+  <testcase classname="19590: Performance Analyst - Report" name="Step 4: Ensure add annotation feature of trends." time="17.872" />
+  <testcase classname="19590: Performance Analyst - Report" name="Step 5: Ensure edit annotation feature of trends." time="0.001">
+   <skipped message="Temporarily disabled with xit" />
+  </testcase>
+  <testcase classname="19590: Performance Analyst - Report" name="Step 6: Ensure delete annotation feature of trends." time="0">
+   <skipped message="Temporarily disabled with xit" />
+  </testcase>
+ </testsuite>
+</testsuites>

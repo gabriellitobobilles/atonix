@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="6" time="318.543">
+ <testsuite name="19592: Performance Analyst - Summary - Donuts" timestamp="2020-01-13T20:43:18" hostname="localhost" time="318.543" errors="0" tests="6" skipped="0" disabled="0" failures="0">
+  <testcase classname="19592: Performance Analyst - Summary - Donuts" name="Step 1: Verify Donut for All Clients-&gt;City of Lawrence-&gt;Waste Water Treatment Plants-&gt;WWTP-&gt;WWTP" time="66.393" />
+  <testcase classname="19592: Performance Analyst - Summary - Donuts" name="Step 2: Verify Donut for All Clients-&gt;Omaha MUD-&gt;Florence WTP" time="23.213" />
+  <testcase classname="19592: Performance Analyst - Summary - Donuts" name="Step 3: Verify the donuts along with its charts, data for All Clients-&gt;Omaha MUD-&gt;Water Treatment Plants-&gt;Florence WTP with Time frame -Q3-Q4-2016" time="22.973" />
+  <testcase classname="19592: Performance Analyst - Summary - Donuts" name="Step 4: Ensure add annotation feature of trends." time="134.987" />
+  <testcase classname="19592: Performance Analyst - Summary - Donuts" name="Step 5: Ensure edit annotation feature of trends." time="5.03" />
+  <testcase classname="19592: Performance Analyst - Summary - Donuts" name="Step 6: Ensure delete annotation feature of trends." time="27.22" />
+ </testsuite>
+</testsuites>

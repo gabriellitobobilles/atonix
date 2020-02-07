@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="2" time="237.142">
+ <testsuite name="19582: Performance Analyst - Donuts" timestamp="2020-01-13T20:41:05" hostname="localhost" time="237.142" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="19582: Performance Analyst - Donuts" name="Step 1- Verify values seem correct in Donuts" time="7.377" />
+  <testcase classname="19582: Performance Analyst - Donuts" name="Step 2- Click a slice in each donut and verify correct navigation" time="154.818" />
+ </testsuite>
+</testsuites>

@@ -1,0 +1,28 @@
+<div [formGroup]="workflowForm">
+  <div class="select-settings email-inputs">
+    <label>Recipients:</label>
+    <ng-container *ngIf="formState !== WorkflowFormStateType.Viewing; else: viewingFormRecipientList">
+      <input type="text" placeholder="Recipients" formControlName="recipientList" />
+      <mat-error class="invalid" *ngIf="showValidationMessages && errors['recipientList']">
+        {{ errors['recipientList'] }}
+      </mat-error>
+    </ng-container>
+    <ng-template #viewingFormRecipientList> {{ workflowForm.get('recipientList').value }} </ng-template>
+  </div>
+  <div class="select-settings email-inputs">
+    <label>Subject:</label>
+    <ng-container *ngIf="formState !== WorkflowFormStateType.Viewing; else: viewingFormSubject">
+      <input type="text" placeholder="Subject" formControlName="subject" />
+      <mat-error class="invalid" *ngIf="showValidationMessages && errors['subject']"> {{ errors['subject'] }} </mat-error>
+    </ng-container>
+    <ng-template #viewingFormSubject> {{ workflowForm.get('subject').value }} </ng-template>
+  </div>
+  <div class="select-settings email-inputs">
+    <label>Message Body:</label>
+    <ng-container *ngIf="formState !== WorkflowFormStateType.Viewing; else: viewingFormBody">
+      <textarea placeholder="Message Body" formControlName="messageBody"></textarea>
+      <mat-error class="invalid" *ngIf="showValidationMessages && errors['messageBody']"> {{ errors['messageBody'] }} </mat-error>
+    </ng-container>
+    <ng-template #viewingFormBody> {{ workflowForm.get('messageBody').value }} </ng-template>
+  </div>
+</div>

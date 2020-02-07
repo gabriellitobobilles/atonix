@@ -1,0 +1,56 @@
+@import '_variables';
+
+.invalid {
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 3px;
+  color: $light-text;
+  background-color: $warning;
+}
+
+#executeAction {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.transition-action {
+  color: #34383c;
+  background-color: white;
+  font-weight: bold;
+  border-color: white;
+
+  font-size: 18px;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 0 10px;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  height: 80px;
+}
+
+.disable-checkbox {
+  pointer-events: none;
+}
+
+.transition-resolution-status-this {
+  border-color: lightgray;
+
+  font-size: 18px;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 0 10px;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  height: 80px;
+}
+
+.transition-resolution-status-other {
+  border-color: lightgray;
+  border-style: solid;
+  border-radius: 10px;
+  text-align: left;
+  vertical-align: middle;
+  display: table-cell;
+}

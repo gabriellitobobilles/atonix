@@ -1,0 +1,9 @@
+<div [ngClass]="{ 'light-theme': useLightTheme$ | async }">
+  <atx-toolbar [loggedIn]="loggedIn$ | async" (logOut)="logout()" (toggleAssetNavigator)="toggleAssetNavigator()"> </atx-toolbar>
+  <atx-layout>
+    <atx-sidenav (resizeSideNav)="resizeSideNav($event)" [open]="showSidenav$ | async" [width]="sidenavWidth$ | async">
+      <ng-content select="[sideNav]"></ng-content>
+    </atx-sidenav>
+    <router-outlet></router-outlet>
+  </atx-layout>
+</div>

@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="NGCompile" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Atonix.Web.Sites</RootNamespace>
+    <AssemblyName>Atonix.Web.Sites</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <ProjectGuid>{FA31DC00-23FC-4F16-82DE-98F53FA50D58}</ProjectGuid>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include=".tfignore" />
+    <None Include="angular.json" />
+    <Content Include="e2e\tsconfig.e2e.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <None Include="package-lock.json" />
+    <None Include="package.json" />
+    <Content Include="jest.config.js" />
+    <Content Include="projects\WorkflowEditor-e2e\tsconfig.e2e.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <None Include="projects\WorkflowEditor\browserslist" />
+    <None Include="projects\WorkflowEditor\src\app\auth\components\login-form.component.scss" />
+    <None Include="projects\WorkflowEditor\src\app\auth\components\mfa-form\mfa-form.component.scss" />
+    <None Include="projects\WorkflowEditor\src\app\layout\components\layout.component.scss" />
+    <None Include="projects\WorkflowEditor\src\app\layout\components\sidenav.component.scss" />
+    <None Include="projects\WorkflowEditor\src\app\layout\components\toolbar.component.scss" />
+    <None Include="projects\WorkflowEditor\src\app\layout\containers\app\app.component.scss" />
+    <None Include="projects\WorkflowEditor\src\assets\.gitkeep" />
+    <None Include="projects\WorkflowEditor\src\styles\atx-material-theme.scss" />
+    <None Include="projects\WorkflowEditor\src\styles\global.scss" />
+    <None Include="projects\WorkflowEditor\src\styles\_variables.scss" />
+    <Content Include="projects\WorkflowEditor\tsconfig.app.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Include="projects\WorkflowEditor\tsconfig.spec.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <None Include="projects\WorkflowEditor\tslint.json" />
+    <None Include="proxy-dev.conf.json" />
+    <None Include="proxy-local.conf.json" />
+    <None Include="publish.ps1" />
+    <None Include="README.md" />
+    <None Include="src\app\app.component.scss" />
+    <None Include="src\assets\.gitkeep" />
+    <None Include="src\browserslist" />
+    <None Include="src\styles.scss" />
+    <Content Include="src\tsconfig.app.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\tsconfig.spec.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <None Include="src\tslint.json" />
+    <Content Include="tsconfig.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <None Include="tslint.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="e2e\protractor.conf.js" />
+    <Content Include="projects\WorkflowEditor-e2e\protractor.conf.js" />
+    <Content Include="projects\WorkflowEditor\karma.conf.js" />
+    <Content Include="projects\WorkflowEditor\src\app\auth\components\mfa-form\mfa-form.component.html" />
+    <Content Include="projects\WorkflowEditor\src\app\layout\containers\app\app.component.html" />
+    <Content Include="projects\WorkflowEditor\src\assets\asset-360-logo-reversed-nav.png" />
+    <Content Include="projects\WorkflowEditor\src\assets\atonix-logo-rev.png" />
+    <Content Include="projects\WorkflowEditor\src\assets\nav-tree.png" />
+    <Content Include="projects\WorkflowEditor\src\assets\nav-tree.svg" />
+    <Content Include="projects\WorkflowEditor\src\favicon.ico" />
+    <Content Include="projects\WorkflowEditor\src\index.html" />
+    <Content Include="src\app\app.component.html" />
+    <Content Include="src\favicon.ico" />
+    <Content Include="src\index.html" />
+    <Content Include="src\karma.conf.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="e2e\src\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="e2e\src\app.po.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor-e2e\src\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor-e2e\src\app.po.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\app.module.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\auth.module.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\components\login-form.component.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\components\mfa-form\mfa-form.component.spec.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\components\mfa-form\mfa-form.component.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\containers\login-page.component.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\models\authenticate.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\models\mfa.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\services\asset.service.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\services\auth-guard.service.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\services\auth.service.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\services\test.service.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\state\auth.actions.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\state\auth.effects.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\state\auth.reducer.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\state\index.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\auth\state\login.reducer.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\layout\components\layout.component.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\layout\components\sidenav.component.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\layout\components\toolbar.component.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\layout\containers\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\layout\containers\app\app.component.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\layout\layout.module.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\layout\state\index.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\layout\state\layout.actions.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\layout\state\layout.reducer.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\material\index.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\material\material.module.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\shared\services\jwt-interceptor.service.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\state\index.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\state\router.reducer.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\workflow\workflow.module.spec.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\app\workflow\workflow.module.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\environments\environment.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\main.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\polyfills.ts" />
+    <TypeScriptCompile Include="projects\WorkflowEditor\src\test.ts" />
+    <TypeScriptCompile Include="src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="src\environments\environment.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\polyfills.ts" />
+    <TypeScriptCompile Include="src\test.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <NoWarn>
+    </NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Test'">
+    <OutputPath>bin\Test\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Stage'">
+    <OutputPath>bin\Stage\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <Target Name="NGCompile">
+  </Target>
+  <Target Name="Build">
+  </Target>
+  <Target Name="Rebuild">
+  </Target>
+  <Target Name="BuiltProjectOutputGroup">
+  </Target>
+  <Target Name="BuiltProjectOutputGroupDependencies">
+  </Target>
+  <Target Name="DebugSymbolsProjectOutputGroup">
+  </Target>
+  <Target Name="DebugSymbolsProjectOutputGroupDependencies">
+  </Target>
+  <Target Name="DocumentationProjectOutputGroup">
+  </Target>
+  <Target Name="DocumentationProjectOutputGroupDependencies">
+  </Target>
+  <Target Name="SatelliteDllsProjectOutputGroup">
+  </Target>
+  <Target Name="SatelliteDllsProjectOutputGroupDependencies">
+  </Target>
+  <Target Name="SGenFilesOutputGroup">
+  </Target>
+  <Target Name="SGenFilesOutputGroupDependencies">
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

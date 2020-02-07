@@ -1,0 +1,12 @@
+<ng-container *ngIf="categories > 0; else: noIssues">
+  <highcharts-chart
+    [Highcharts]="highCharts"
+    [options]="donutChart.data()"
+    [(update)]="donutChart.updatedData"
+    [oneToOne]="true"
+    style="position:absolute;width:100%;height:200px;"
+  ></highcharts-chart>
+</ng-container>
+<ng-template class="no-value-container" #noIssues>
+  <div class="no-value-text mat-display-3">{{ donutChart.errorMessage }}</div>
+</ng-template>

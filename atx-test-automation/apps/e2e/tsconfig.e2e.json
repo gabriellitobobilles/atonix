@@ -1,0 +1,17 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		// "outDir": "../../dist/out-tsc/apps/workflow-editor-e2e",
+		"outDir": "ConvertedJS",
+		"module": "commonjs",
+		"target": "es5",
+		"types": [
+			"jasmine",
+			"jasminewd2",
+			"node"
+		]
+	},
+	"include": [
+		"**/*"
+	]
+}

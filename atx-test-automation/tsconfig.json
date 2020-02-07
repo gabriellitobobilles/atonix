@@ -1,0 +1,66 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "importHelpers": true,
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@AtonixWebSites/auth": [
+        "libs/auth/src/index.ts"
+      ],
+      "@AtonixWebSites/ngrx-router": [
+        "libs/ngrx-router/src/index.ts"
+      ],
+      "@env/*": [
+        "build/environments/*"
+      ],
+      "@AtonixWebSites/asset-tree": [
+        "libs/asset-tree/src/index.ts"
+      ],
+      "@AtonixWebSites/material": [
+        "libs/material/src/index.ts"
+      ],
+      "@AtonixWebSites/material-layout": [
+        "libs/material-layout/src/index.ts"
+      ],
+      "@AtonixWebSites/assets": [
+        "libs/assets/src/index.ts"
+      ],
+      "@AtonixWebSites/layout": [
+        "libs/layout/src/index.ts"
+      ],
+      "@AtonixWebSites/shared": [
+        "libs/shared/src/index.ts"
+      ],
+      "@AtonixWebSites/api": [
+        "libs/api/src/index.ts"
+      ],
+      "@AtonixWebSites/time-range-selector": [
+        "libs/time-range-selector/src/index.ts"
+      ],
+      "@AtonixWebSites/hchart": [
+        "libs/hchart/src/index.ts"
+      ],
+      "@AtonixWebSites/asset-info-tray": [
+        "libs/asset-info-tray/src/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}

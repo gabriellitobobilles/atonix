@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="2" tests="2" time="66.492">
+ <testsuite name="19610: Data Explorer - Legend" timestamp="2020-01-13T21:08:49" hostname="localhost" time="66.492" errors="0" tests="2" skipped="0" disabled="0" failures="2">
+  <testcase classname="19610: Data Explorer - Legend" name="Step 1:  Click on data tag titles on chart legend to confirm hiding on trend" time="22.355">
+   <failure type="exception" message="WebDriverError: unknown error: failed to parse value of getElementRegion
+  (Session info: chrome=79.0.3945.117)
+  (Driver info: chromedriver=79.0.3945.16 (93fcc21110c10dbbd49bbff8f472335360e31d05-refs/branch-heads/3945@{#262}),platform=Windows NT 10.0.18362 x86_64)"><![CDATA[WebDriverError: unknown error: failed to parse value of getElementRegion
+  (Session info: chrome=79.0.3945.117)
+  (Driver info: chromedriver=79.0.3945.16 (93fcc21110c10dbbd49bbff8f472335360e31d05-refs/branch-heads/3945@{#262}),platform=Windows NT 10.0.18362 x86_64)
+    at Object.checkLegacyResponse (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\error.js:546:15)
+    at parseHttpResponse (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\http.js:509:13)
+    at doSend.then.response (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\http.js:441:30)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)
+From: Task: mouseMove
+    at thenableWebDriverProxy.schedule (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\webdriver.js:807:17)
+    at actions.map.action (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\actions.js:124:23)
+    at Array.map (<anonymous>)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\actions.js:123:29
+    at TaskQueue.execute_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:3084:14)
+    at TaskQueue.executeNext_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:3067:27)
+    at asyncRun (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2927:27)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:668:7
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)
+From: Task: ActionSequence.perform
+    at ActionSequence.perform (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\actions.js:122:33)
+    at Object.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec24_dataExplorer-Legend.e2e-spec.ts:46:74)
+    at step (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at fulfilled (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:104:62)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)]]>
+   </failure>
+  </testcase>
+  <testcase classname="19610: Data Explorer - Legend" name="Step 2:  Click on key icon to change 6 types of tag displays on trend" time="5.382">
+   <failure type="exception" message="Failed: element not interactable
+  (Session info: chrome=79.0.3945.117)
+  (Driver info: chromedriver=79.0.3945.16 (93fcc21110c10dbbd49bbff8f472335360e31d05-refs/branch-heads/3945@{#262}),platform=Windows NT 10.0.18362 x86_64)"><![CDATA[ElementNotVisibleError: element not interactable
+  (Session info: chrome=79.0.3945.117)
+  (Driver info: chromedriver=79.0.3945.16 (93fcc21110c10dbbd49bbff8f472335360e31d05-refs/branch-heads/3945@{#262}),platform=Windows NT 10.0.18362 x86_64)
+    at Object.checkLegacyResponse (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\error.js:546:15)
+    at parseHttpResponse (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\http.js:509:13)
+    at doSend.then.response (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\http.js:441:30)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)
+From: Task: WebElement.click()
+    at thenableWebDriverProxy.schedule (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\webdriver.js:807:17)
+    at WebElement.schedule_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\webdriver.js:2010:25)
+    at WebElement.click (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\webdriver.js:2092:17)
+    at actionFn (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:89:44)
+    at Array.map (<anonymous>)
+    at actionResults.getWebElements.then (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:461:65)
+    at ManagedPromise.invokeCallback_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:1376:14)
+    at TaskQueue.execute_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:3084:14)
+    at TaskQueue.executeNext_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:3067:27)
+    at asyncRun (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2927:27)Error
+    at ElementArrayFinder.applyAction_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:459:27)
+    at ElementArrayFinder.(anonymous function).args [as click] (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:91:29)
+    at ElementFinder.(anonymous function).args [as click] (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:831:22)
+    at Object.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec24_dataExplorer-Legend.e2e-spec.ts:79:45)
+    at step (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:107:75
+    at new Promise (<anonymous>)
+    at Object.__awaiter (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:103:16)
+    at UserContext.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec24_dataExplorer-Legend.e2e-spec.ts:77:79)
+From: Task: Run it("Step 2:  Click on key icon to change 6 types of tag displays on trend") in control flow
+    at UserContext.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasminewd2\index.js:94:19)
+    at attempt (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4297:26)
+    at QueueRunner.run (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4217:20)
+    at runNext (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4257:20)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4264:13
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4172:9
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasminewd2\index.js:64:48
+    at ControlFlow.emit (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\events.js:62:21)
+    at ControlFlow.shutdown_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2674:10)
+    at shutdownTask_.MicroTask (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2599:53)
+From asynchronous test: 
+Error
+    at Suite.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec24_dataExplorer-Legend.e2e-spec.ts:77:3)
+    at addSpecsToSuite (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:1107:25)
+    at Env.describe (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:1074:7)
+    at describe (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4399:18)
+    at Object.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec24_dataExplorer-Legend.e2e-spec.ts:5:1)
+    at Module._compile (internal/modules/cjs/loader.js:723:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:734:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)]]>
+   </failure>
+  </testcase>
+ </testsuite>
+</testsuites>

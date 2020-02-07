@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="12" time="217.709">
+ <testsuite name="19591: Performance Analyst - Dispatch -Scenarios - Reports" timestamp="2020-01-13T20:54:29" hostname="localhost" time="217.709" errors="0" tests="12" skipped="0" disabled="0" failures="0">
+  <testcase classname="19591: Performance Analyst - Dispatch -Scenarios - Reports" name="Step 1: Ensure scenarios can be selected from comparison chart." time="48.85" />
+  <testcase classname="19591: Performance Analyst - Dispatch -Scenarios - Reports" name="Step 2: Verify Clear/Cancel/Ok button feature on comparison chart." time="0.596" />
+  <testcase classname="19591: Performance Analyst - Dispatch -Scenarios - Reports" name="Step 3: Ensure Filter functionality on comparison chart." time="0.958" />
+  <testcase classname="19591: Performance Analyst - Dispatch -Scenarios - Reports" name="Step 4: Ensure user is able to select different modes of data (Min/Max/Average/First/Last/Sum)" time="2.755" />
+  <testcase classname="19591: Performance Analyst - Dispatch -Scenarios - Reports" name="Step 5: Ensure reports can be selected from drop down list." time="0.487" />
+  <testcase classname="19591: Performance Analyst - Dispatch -Scenarios - Reports" name="Step 6: Verify Print report feature." time="3.623" />
+  <testcase classname="19591: Performance Analyst - Dispatch -Scenarios - Reports" name="Step 7: Ensure report can be downloaded as an image, pdf, svg, jpeg. " time="18.316" />
+  <testcase classname="19591: Performance Analyst - Dispatch -Scenarios - Reports" name="Step 8: Verify edit chart feature." time="14.142" />
+  <testcase classname="19591: Performance Analyst - Dispatch -Scenarios - Reports" name="Step 9: Verify edit chart settings feature." time="1.061" />
+  <testcase classname="19591: Performance Analyst - Dispatch -Scenarios - Reports" name="Step 10: Ensure open chart in new tab feature." time="24.604" />
+  <testcase classname="19591: Performance Analyst - Dispatch -Scenarios - Reports" name="Step 11: Verify email chart feature." time="0.551" />
+  <testcase classname="19591: Performance Analyst - Dispatch -Scenarios - Reports" name="Step 12: Verify Download chart contents feature." time="68.898" />
+ </testsuite>
+</testsuites>

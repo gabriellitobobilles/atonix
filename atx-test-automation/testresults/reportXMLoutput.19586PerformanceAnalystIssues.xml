@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="3" time="74.153">
+ <testsuite name="19586: Performance Analyst - Issues" timestamp="2020-01-13T20:51:07" hostname="localhost" time="74.153" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+  <testcase classname="19586: Performance Analyst - Issues" name="Step 1: Hover over info icon for issue summary" time="14.647" />
+  <testcase classname="19586: Performance Analyst - Issues" name="Step 2: Click issue title to navigate to issue" time="16.6" />
+  <testcase classname="19586: Performance Analyst - Issues" name="Step 3: Select Issue Name and Confirm Navigation to Issue Snapshot " time="8.594" />
+ </testsuite>
+</testsuites>

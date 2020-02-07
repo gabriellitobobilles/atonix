@@ -1,0 +1,11 @@
+@import '_variables';
+@mixin category-form-theme($material-theme, $atx-theme) {
+  button {
+    background-color: $accent;
+    color: $light-text;
+  }
+  .warningButton {
+    display: flex;
+    justify-content: center;
+  }
+}

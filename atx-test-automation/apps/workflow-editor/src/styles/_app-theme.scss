@@ -1,0 +1,33 @@
+@import '../app/workflow/containers/main/main.component';
+@import '../app/workflow/components/category-selector/category-selector.component';
+@import '../app/workflow/components/statuses/statuses.component';
+
+@import 'libs/assets/src/material-styles/general.scss';
+
+@import 'libs/material-layout/src/lib/components/toolbar.component.scss';
+@import 'libs/material-layout/src/lib/components/layout.component.scss';
+@import 'libs/material-layout/src/lib/components/sidenav.component.scss';
+
+@mixin component-themes($material-theme, $atx-theme) {
+  $accent: map-get($material-theme, accent);
+  $background: map-get($material-theme, background);
+  .app-background {
+    background: mat-color($background, background);
+  }
+
+  // If you need to read variables use this:
+  // @debug $theme;
+  // Variables will be in the terminal only,
+  // they are not available in the Chrome Debugger
+  @include toolbar-theme($material-theme, $atx-theme);
+  @include layout-theme($material-theme, $atx-theme);
+  @include sidenav-theme($material-theme, $atx-theme);
+  @include category-selector-theme($material-theme, $atx-theme);
+  @include category-form-theme($material-theme, $atx-theme);
+  @include general-theme($dark-material-theme, $dark-theme);
+  @include main-theme($material-theme, $atx-theme);
+}
+
+mat-panel-title {
+  font-weight: 800 !important;
+}

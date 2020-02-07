@@ -1,0 +1,35 @@
+<mat-toolbar id="toolbar" color="primary">
+  <span *ngIf="loggedIn && showAssetNavigatorButton">
+    <button class="toolbar-button asset-tree-button" title="Toggle Asset Navigator" (click)="toggleAssetNavigator.emit()">
+      <img class="asset-tree-image" width="20" height="20" src="./assets/icons/nav-tree.png" />
+    </button>
+  </span>
+  <img class="logo" src="./assets/images/atonix-logo-rev.png" /> <span class="headline d-none d-sm-block">{{ atxTitle }}</span>
+  <span class="right-justify"></span>
+
+  <span *ngIf="loggedIn">
+    <span class="greeting mat-subheading-2">
+      Hello <a routerLink="/user" routerLinkActive="active"> {{ accountModelUser?.DisplayName }}</a
+      >!
+    </span>
+    <button class="toolbar-button" id="Logout" mat-button (click)="logOut.emit()"><span>Logout</span></button>
+    <span *ngIf="showTimeSelectorButton">
+      <button id="TimeSliderToggle" mat-button class="toolbar-icons toolbar-button" title="Toggle Time Slider" (click)="toggleTimeSelector.emit()">
+        <fa-icon [icon]="faCalendar"></fa-icon>
+      </button>
+    </span>
+
+    <span>
+      <button
+        id="AppTrayToggle"
+        cdkOverlayOrigin
+        mat-button
+        class="toolbar-icons toolbar-button"
+        title="Asset360 Apps"
+        (click)="this.showAppContext()"
+      >
+        <fa-icon [icon]="faTh"></fa-icon>
+      </button>
+    </span>
+  </span>
+</mat-toolbar>

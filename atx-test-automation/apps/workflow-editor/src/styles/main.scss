@@ -1,0 +1,3 @@
+@import '_app-theme.scss';
+@import 'libs/assets/src/material-styles/main.scss';
+@include component-themes($dark-material-theme, $dark-theme);

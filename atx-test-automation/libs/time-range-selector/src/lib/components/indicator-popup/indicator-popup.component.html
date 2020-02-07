@@ -1,0 +1,88 @@
+<form id="timeslidePopupForm" [formGroup]="form" (ngSubmit)="SavePopup()">
+  <div class="PopupClose" (click)="CancelPopup()">
+    <fa-icon [icon]="faTimesCircle" style="position: absolute; left: 0; top: -7px;"></fa-icon>
+  </div>
+  <div class="PopupHeader ">Selected Indicator</div>
+  <div class="PopupBody trPopupBody">
+    <div class="PopupBodyText trPopupBodyText">Adjust the time slider to change the time that you are interested in viewing.</div>
+    <div class="trPopupBodyPanel">
+      <div class="trPanelHeader" style="overflow:hidden">
+        <span
+          *ngIf="!IsRangeValid()"
+          style="background-color:#BA5048;font-weight:normal;width:100%;display:inline-block;height:100%"
+        >
+          {{ ErrorMessage }}
+        </span>
+        <span>Go to Time:</span>
+      </div>
+
+      <div class="trTime">
+        <div class="trTimeRow">
+          <mat-form-field>
+            <input matInput formControlName="indicatorDate" [matDatepicker]="IndicatorDatePicker" placeholder="Date:" />
+            <mat-datepicker-toggle matSuffix [for]="IndicatorDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #IndicatorDatePicker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field> <input matInput type="time" formControlName="indicatorTime" step="0.001" /> </mat-form-field>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-bottom:5px;">
+        <button type="submit" [disabled]="!IsRangeValid()">OK</button>
+        <button type="button" [disabled]="!IsRangeValid()" (click)="ApplyPopup()">Apply</button>
+        <button type="button" (click)="CancelPopup()">Cancel</button>
+      </div>
+    </div>
+
+    <div class="trPopupBodyPanel">
+      <div class="trPanelHeader">Step By:</div>
+      <div class="trPopupBodyZoomToContainer">
+        <button
+          class="top"
+          [ngClass]="{ selected: (stepIncrement$ | async) == 'days' }"
+          (click)="ChooseTimeRange('days')"
+          type="button"
+        >
+          Day
+        </button>
+        <button
+          class="top"
+          [ngClass]="{ selected: (stepIncrement$ | async) == 'weeks' }"
+          (click)="ChooseTimeRange('weeks')"
+          type="button"
+        >
+          Week
+        </button>
+        <button
+          class="top"
+          [ngClass]="{ selected: (stepIncrement$ | async) == 'months' }"
+          (click)="ChooseTimeRange('months')"
+          type="button"
+        >
+          Month
+        </button>
+        <button
+          class="top"
+          [ngClass]="{ selected: (stepIncrement$ | async) == 'quarters' }"
+          (click)="ChooseTimeRange('quarters')"
+          type="button"
+        >
+          Quarter
+        </button>
+        <button
+          class="top"
+          [ngClass]="{ selected: (stepIncrement$ | async) == 'years' }"
+          (click)="ChooseTimeRange('years')"
+          type="button"
+        >
+          Year
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="PopupFooter trPopupFooter">
+    <div (click)="Step('left')"><fa-icon [icon]="faCaretLeft"></fa-icon></div>
+    Step
+    <div (click)="Step('right')"><fa-icon [icon]="faCaretRight"></fa-icon></div>
+  </div>
+</form>

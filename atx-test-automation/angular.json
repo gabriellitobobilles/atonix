@@ -1,0 +1,613 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "workflow-editor": {
+      "root": "apps/workflow-editor/",
+      "sourceRoot": "apps/workflow-editor/src",
+      "projectType": "application",
+      "prefix": "atx",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/workflow-editor",
+            "baseHref": "/WorkflowEditor/",
+            "deployUrl": "/WorkflowEditor/",
+            "index": "apps/workflow-editor/src/index.html",
+            "main": "apps/workflow-editor/src/main.ts",
+            "polyfills": "apps/workflow-editor/src/polyfills.ts",
+            "tsConfig": "apps/workflow-editor/tsconfig.app.json",
+            "assets": [
+              "apps/workflow-editor/src/favicon.ico",
+              "apps/workflow-editor/src/web.config",
+              "apps/workflow-editor/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./libs/assets/shared-assets/",
+                "output": "./assets"
+              }
+            ],
+            "styles": ["libs/assets/src/material-styles/global.scss", "apps/workflow-editor/src/styles/main.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/assets/src/material-styles"]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "build/environments/environment.ts",
+                  "with": "build/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            },
+            "test": {
+              "fileReplacements": [
+                {
+                  "replace": "build/environments/environment.ts",
+                  "with": "build/environments/environment.test.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            },
+            "stage": {
+              "fileReplacements": [
+                {
+                  "replace": "build/environments/environment.ts",
+                  "with": "build/environments/environment.stage.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "workflow-editor:build",
+            "servePath": "WorkflowEditor/",
+            "baseHref": "/WorkflowEditor/"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "workflow-editor:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "workflow-editor:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/workflow-editor/tsconfig.app.json", "apps/workflow-editor/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/workflow-editor/jest.config.js",
+            "tsConfig": "apps/workflow-editor/tsconfig.spec.json",
+            "setupFile": "apps/workflow-editor/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "workflow-editor-e2e": {
+      "root": "apps/workflow-editor-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/workflow-editor-e2e/protractor.conf.js",
+            "devServerTarget": "workflow-editor:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "workflow-editor:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/workflow-editor-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "asset360": {
+      "root": "apps/asset360/",
+      "sourceRoot": "apps/asset360/src",
+      "projectType": "application",
+      "prefix": "atx",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/asset360",
+            "index": "apps/asset360/src/index.html",
+            "main": "apps/asset360/src/main.ts",
+            "polyfills": "apps/asset360/src/polyfills.ts",
+            "tsConfig": "apps/asset360/tsconfig.app.json",
+            "assets": [
+              "apps/asset360/src/favicon.ico",
+              "apps/asset360/src/web.config",
+              "apps/asset360/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./libs/assets/shared-assets/",
+                "output": "./assets"
+              }
+            ],
+            "styles": ["libs/assets/src/material-styles/global.scss", "apps/asset360/src/styles/main.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/assets/src/material-styles"]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "build/environments/environment.ts",
+                  "with": "build/environments/environment.dev.ts"
+                }
+              ],
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            },
+            "test": {
+              "fileReplacements": [
+                {
+                  "replace": "build/environments/environment.ts",
+                  "with": "build/environments/environment.test.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            },
+            "stage": {
+              "fileReplacements": [
+                {
+                  "replace": "build/environments/environment.ts",
+                  "with": "build/environments/environment.stage.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            },
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "build/environments/environment.ts",
+                  "with": "build/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "asset360:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "asset360:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "asset360:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/asset360/tsconfig.app.json", "apps/asset360/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/asset360/jest.config.js",
+            "tsConfig": "apps/asset360/tsconfig.spec.json",
+            "setupFile": "apps/asset360/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "asset360-e2e": {
+      "root": "apps/asset360-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/asset360-e2e/protractor.conf.js",
+            "devServerTarget": "asset360:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "asset360:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/asset360-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "auth": {
+      "root": "libs/auth",
+      "sourceRoot": "libs/auth/src",
+      "projectType": "library",
+      "prefix": "atx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/auth/tsconfig.lib.json", "libs/auth/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/auth/jest.config.js",
+            "tsConfig": "libs/auth/tsconfig.spec.json",
+            "setupFile": "libs/auth/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "api": {
+      "root": "libs/api",
+      "sourceRoot": "libs/api/src",
+      "projectType": "library",
+      "prefix": "atx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/api/tsconfig.lib.json", "libs/api/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/api/jest.config.js",
+            "tsConfig": "libs/api/tsconfig.spec.json",
+            "setupFile": "libs/api/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "ngrx-router": {
+      "root": "libs/ngrx-router",
+      "sourceRoot": "libs/ngrx-router/src",
+      "projectType": "library",
+      "prefix": "atx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/ngrx-router/tsconfig.lib.json", "libs/ngrx-router/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ngrx-router/jest.config.js",
+            "tsConfig": "libs/ngrx-router/tsconfig.spec.json",
+            "setupFile": "libs/ngrx-router/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "asset-info-tray": {
+      "root": "libs/asset-info-tray",
+      "sourceRoot": "libs/asset-info-tray/src",
+      "projectType": "library",
+      "prefix": "atx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/asset-info-tray/tsconfig.lib.json", "libs/asset-info-tray/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/asset-info-tray/jest.config.js",
+            "tsConfig": "libs/asset-info-tray/tsconfig.spec.json",
+            "setupFile": "libs/asset-info-tray/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "asset-tree": {
+      "root": "libs/asset-tree",
+      "sourceRoot": "libs/asset-tree/src",
+      "projectType": "library",
+      "prefix": "atx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/asset-tree/tsconfig.lib.json", "libs/asset-tree/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/asset-tree/jest.config.js",
+            "tsConfig": "libs/asset-tree/tsconfig.spec.json",
+            "setupFile": "libs/asset-tree/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "material": {
+      "root": "libs/material",
+      "sourceRoot": "libs/material/src",
+      "projectType": "library",
+      "prefix": "atx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/material/tsconfig.lib.json", "libs/material/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/material/jest.config.js",
+            "tsConfig": "libs/material/tsconfig.spec.json",
+            "setupFile": "libs/material/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "material-layout": {
+      "root": "libs/material-layout",
+      "sourceRoot": "libs/material-layout/src",
+      "projectType": "library",
+      "prefix": "atx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/material-layout/tsconfig.lib.json", "libs/material-layout/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/material-layout/jest.config.js",
+            "tsConfig": "libs/material-layout/tsconfig.spec.json",
+            "setupFile": "libs/material-layout/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "assets": {
+      "root": "libs/assets",
+      "sourceRoot": "libs/assets/src",
+      "projectType": "library",
+      "prefix": "atx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/assets/tsconfig.lib.json", "libs/assets/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/assets/jest.config.js",
+            "tsConfig": "libs/assets/tsconfig.spec.json",
+            "setupFile": "libs/assets/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "layout": {
+      "root": "libs/layout",
+      "sourceRoot": "libs/layout/src",
+      "projectType": "library",
+      "prefix": "atx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/layout/tsconfig.lib.json", "libs/layout/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/layout/jest.config.js",
+            "tsConfig": "libs/layout/tsconfig.spec.json",
+            "setupFile": "libs/layout/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "shared": {
+      "root": "libs/shared",
+      "sourceRoot": "libs/shared/src",
+      "projectType": "library",
+      "prefix": "atx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/tsconfig.lib.json", "libs/shared/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/shared/jest.config.js",
+            "tsConfig": "libs/shared/tsconfig.spec.json",
+            "setupFile": "libs/shared/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "time-range-selector": {
+      "root": "libs/time-range-selector",
+      "sourceRoot": "libs/time-range-selector/src",
+      "projectType": "library",
+      "prefix": "atx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/time-range-selector/tsconfig.lib.json", "libs/time-range-selector/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/time-range-selector/jest.config.js",
+            "tsConfig": "libs/time-range-selector/tsconfig.spec.json",
+            "setupFile": "libs/time-range-selector/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "hchart": {
+      "root": "libs/hchart",
+      "sourceRoot": "libs/hchart/src",
+      "projectType": "library",
+      "prefix": "AtonixWebSites",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/hchart/tsconfig.lib.json", "libs/hchart/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/hchart/jest.config.js",
+            "tsConfig": "libs/hchart/tsconfig.spec.json",
+            "setupFile": "libs/hchart/src/test-setup.ts"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/schematics"
+  },
+  "defaultProject": "workflow-editor",
+  "schematics": {
+    "@nrwl/schematics:component": {
+      "styleext": "scss"
+    }
+  }
+}

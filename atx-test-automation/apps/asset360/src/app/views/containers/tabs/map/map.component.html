@@ -1,0 +1,11 @@
+<p>Start Date: {{ startDate$ | async | date }}</p>
+<p>End Date: {{ endDate$ | async | date }}</p>
+<p>Indicator: {{ indicator$ | async | date }}</p>
+<button (click)="Indicator(true)">Indicator On</button><br />
+<button (click)="Indicator(false)">Indicator Off</button><br />
+<button (click)="Range(true)">Range On</button><br />
+<button (click)="Range(false)">Range Off</button> <button (click)="SetAsset()">Set Asset</button> <br />
+<a (click)="AssetInfoTray(selectedAsset)">Selected Asset: {{ selectedAsset }}</a>
+<div style="width:100%; height:250px;border:1px solid green;">
+  <atx-assettree id="myTree" appContextID="1" key="maptab" (nodeSelected)="NodeSelected($event)"></atx-assettree>
+</div>

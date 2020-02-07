@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="5" time="204.196">
+ <testsuite name="19585: Performance Analyst  - Alerts - Chart" timestamp="2020-01-13T20:49:22" hostname="localhost" time="204.196" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+  <testcase classname="19585: Performance Analyst  - Alerts - Chart" name="Step 1: Verify load time seems reasonable" time="29.553" />
+  <testcase classname="19585: Performance Analyst  - Alerts - Chart" name="Step 2: Download data to excel" time="70.206" />
+  <testcase classname="19585: Performance Analyst  - Alerts - Chart" name="Step 3: Expand chart to full screen" time="16.645" />
+  <testcase classname="19585: Performance Analyst  - Alerts - Chart" name="Step 4: Click different alert and verify that it populates in chart " time="45.13" />
+  <testcase classname="19585: Performance Analyst  - Alerts - Chart" name="Step 5: Verify Vertical Expand(up and down) and Alert default filter" time="1.67" />
+ </testsuite>
+</testsuites>

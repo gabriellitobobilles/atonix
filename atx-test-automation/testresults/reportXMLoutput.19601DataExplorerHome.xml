@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="4" time="209.244">
+ <testsuite name="19601: Data Explorer - Home" timestamp="2020-01-13T20:58:14" hostname="localhost" time="209.244" errors="0" tests="4" skipped="0" disabled="0" failures="0">
+  <testcase classname="19601: Data Explorer - Home" name="step 1: Verify app auto scale" time="57.493" />
+  <testcase classname="19601: Data Explorer - Home" name="step 2: Any nested scroll bars from previous test" time="0.421" />
+  <testcase classname="19601: Data Explorer - Home" name="step 3: Verify the Customize series name feature for New Chart &amp; New Grouped Series chart" time="66.588" />
+  <testcase classname="19601: Data Explorer - Home" name="step 4: Ensure user is able to group the series for a custom group type." time="52.464" />
+ </testsuite>
+</testsuites>

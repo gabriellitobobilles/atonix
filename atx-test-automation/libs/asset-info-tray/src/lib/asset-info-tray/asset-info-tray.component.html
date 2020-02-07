@@ -1,0 +1,13 @@
+<div class="attribute-tray-right-popup">
+  <div class="attribute-tray-right-container">
+    <div class="attribute-tray-right">
+      <div>
+        <div class="pull-right">
+          <fa-icon [icon]="faRefresh" *ngIf="showRefreshButton" (click)="refresh()" title="Refresh Asset Info"></fa-icon>
+          <fa-icon [icon]="faClose" *ngIf="showCloseButton" (click)="close()" title="Close"></fa-icon>
+        </div>
+        <div class="no-padding no-margin trayTitle">{{ assetAndAttributes?.Asset.AssetDesc }}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="ml-auto">
+  <mat-card class=   "work-management">
+    <mat-card-title>
+      Category Settings
+      <button type="button" mat-mini-fab color="primary" class="small settings-button" (click)="closeSettings()">
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </button>
+      <mat-divider class="top-divider"></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+      <div>
+        Category Name: <span class="mat-body-2">{{ categoryDesc }}</span>
+      </div>
+      <div>
+        Issue Class: <span class="mat-body-2">{{ issueClassDesc }}</span>
+      </div>
+
+      <h3 class="mat-body-2 advanced-settings">Advanced</h3>
+      <mat-divider class="top-divider" style="width:94%;left:8px"></mat-divider>
+      <div style="margin-top:10px;">
+        <label>Asset Classes:</label>
+        <ng-container *ngIf="selectedAssetClassTypes.length > 0; else: allAssetClassTypesSelected">
+          <ul>
+            <li *ngFor="let assetClassType of selectedAssetClassTypes">{{ assetClassType.AssetClassTypeDesc }}</li>
+          </ul>
+        </ng-container>
+        <ng-template #allAssetClassTypesSelected> <span>(applies to all asset class types)</span> </ng-template>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<TestRun xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010" id="1eeea22f-d4c0-446d-9b48-26041352a1df" name="Protractor Test Results" runUser="Gabriel Bobilles">
+  <Times creation="2020-01-13 20:41:05" queuing="2020-01-13 20:41:05" start="2020-01-13 20:41:05" finish="2020-01-13 20:43:12"/>
+  <TestSettings name="Default Test Settings" id="ce1a4cfb-64fa-4d63-8815-e9984737a62c">
+    <Deployment runDeploymentRoot="Performance Analyst - Home"/>
+  </TestSettings>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0"/>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest id="22cfb9f2-833e-4012-905b-d19d2867bb68" name="Performance Analyst - Home - 19580: Performance Analyst - Home - ">
+      <Description>19580: Performance Analyst - Home - </Description>
+      <Execution id="e459e455-53b3-45ab-9d48-d7f1c29182e6"/>
+      <TestMethod codeBase="protractor-jasmine" className="Performance Analyst - Home" name="19580: Performance Analyst - Home"/>
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList id="8c84fa94-04c1-424b-9868-57a2d4851a1d" name="Results Not in a List"/>
+    <TestList id="19431567-8539-422a-85d7-44ee4e166bda" name="All Loaded Results"/>
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="22cfb9f2-833e-4012-905b-d19d2867bb68" executionId="e459e455-53b3-45ab-9d48-d7f1c29182e6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"/>
+  </TestEntries>
+  <Results>
+    <UnitTestResult testId="22cfb9f2-833e-4012-905b-d19d2867bb68" testName="Performance Analyst - Home - 19580: Performance Analyst - Home - " testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" computerName="Lenovo_ThinkPad_0120" outcome="Passed" startTime="2020-01-13 20:41:05" endTime="2020-01-13 20:43:12" duration="00:02:06.061" executionId="e459e455-53b3-45ab-9d48-d7f1c29182e6" relativeResultsDirectory="e459e455-53b3-45ab-9d48-d7f1c29182e6"/>
+  </Results>
+</TestRun>

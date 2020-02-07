@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="1" tests="3" time="67.193">
+ <testsuite name="19611: Data Explorer - Time slider - Selection " timestamp="2020-01-13T21:09:39" hostname="localhost" time="67.193" errors="0" tests="3" skipped="0" disabled="0" failures="1">
+  <testcase classname="19611: Data Explorer - Time slider - Selection " name="Step 1:  Change time range to less than 4 days and verify switch to higher frequency data" time="26.201" />
+  <testcase classname="19611: Data Explorer - Time slider - Selection " name="Step 2:  Change time range with handles in calendar" time="0.775">
+   <failure type="exception" message="TimeoutError: Wait timed out after 10037ms"><![CDATA[TimeoutError: Wait timed out after 10037ms
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2201:17
+    at ManagedPromise.invokeCallback_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:1376:14)
+    at TaskQueue.execute_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:3084:14)
+    at TaskQueue.executeNext_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:3067:27)
+    at asyncRun (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2927:27)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:668:7
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)
+From: Task: <anonymous wait>
+    at scheduleWait (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2188:20)
+    at ControlFlow.wait (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2517:12)
+    at thenableWebDriverProxy.wait (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\webdriver.js:934:29)
+    at run (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\browser.js:59:33)
+    at ProtractorBrowser.to.(anonymous function) [as wait] (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\browser.js:67:16)
+    at helper.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\page\performanceHelper.po.ts:1036:15)
+    at step (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:107:75
+    at new Promise (<anonymous>)
+From: Task: <anonymous>
+    at pollCondition (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2195:19)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2191:7
+    at new ManagedPromise (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:1077:7)
+    at ControlFlow.promise (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2505:12)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2190:22
+    at TaskQueue.execute_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:3084:14)
+    at TaskQueue.executeNext_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:3067:27)
+    at asyncRun (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2974:25)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:668:7
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)
+From: Task: <anonymous wait>
+    at scheduleWait (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2188:20)
+    at ControlFlow.wait (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2517:12)
+    at thenableWebDriverProxy.wait (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\webdriver.js:934:29)
+    at helper.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\page\performanceHelper.po.ts:1035:20)
+    at step (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:107:75
+    at new Promise (<anonymous>)
+    at Object.__awaiter (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:103:16)
+    at helper.trendSelector (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\ConvertedJS\page\performanceHelper.po.js:917:24)]]>
+   </failure>
+  </testcase>
+  <testcase classname="19611: Data Explorer - Time slider - Selection " name="Step 3:  Change time by typing date range in calendar" time="2.723" />
+ </testsuite>
+</testsuites>

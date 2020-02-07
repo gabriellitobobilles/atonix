@@ -1,0 +1,12 @@
+@import '_variables';
+@mixin layout-theme($material-theme, $atx-theme) {
+  $background-color: mat-color($atx-theme, atonix-background-color);
+  .mat-sidenav-container {
+    background-color: $background-color;
+  }
+}
+
+.mat-sidenav-container {
+  top: 55px !important;
+  z-index: -1;
+}

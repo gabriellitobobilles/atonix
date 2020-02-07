@@ -1,0 +1,216 @@
+@import '_variables';
+@mixin category-form-theme($material-theme, $atx-theme) {
+  $workflow: map-get($atx-theme, workflow);
+  $card-text: map-get($workflow, small-card-text);
+  $card-bg: map-get($workflow, small-card-background);
+  $disabled: map-get($workflow, disabled-text);
+  .work-management {
+    background: $card-bg;
+    color: $card-text;
+  }
+  .resolution-status-input {
+    .mat-input-element {
+      caret-color: $card-text;
+      color: $card-text;
+    }
+
+    .mat-form-field-ripple {
+      background-color: $accent !important;
+    }
+  }
+  .add-category-card {
+    background: $card-bg;
+    color: $card-text;
+  }
+
+  .category-settings-card {
+    background: $card-bg;
+    color: $card-text;
+  }
+  .workflow-progress-bar-card {
+    background: $card-bg;
+  }
+  .top-divider {
+    border-top-color: $atonix-sidenav-div-highlight;
+  }
+
+  .disabled-text {
+    mat-checkbox {
+      label {
+        color: $disabled;
+        .mat-checkbox-frame {
+          border-color: $disabled;
+        }
+      }
+    }
+    pointer-events: none;
+  }
+}
+mat-expansion-panel {
+  margin: 10px;
+}
+
+mat-card-title {
+  padding: 0;
+  margin: 0;
+}
+
+.work-management {
+  padding: 10px;
+  margin: 0;
+}
+.up-down-buttons {
+  width: 25px;
+}
+
+.add-category-card {
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.category-settings-card {
+  margin: 0 15px;
+  padding: 10px;
+}
+
+.workflow-progress-bar-card {
+  height: 600px;
+  margin: 10px 0;
+}
+
+.workflow-progress-bar {
+  padding-top: 20px;
+  margin: auto;
+  box-sizing: content-box;
+}
+
+.status-text {
+  position: absolute;
+  left: 5px;
+  top: 0;
+  color: $light-text;
+}
+
+.settings-button {
+  position: absolute;
+  right: 2px;
+  top: 8px;
+}
+
+.new-category-cancel {
+  position: absolute;
+  right: 20px;
+  top: 4px;
+}
+.new-category-save {
+  position: absolute;
+  right: 50px;
+  top: 4px;
+}
+
+.resolution-status-delete {
+  position: absolute;
+  right: 5px;
+  top: 4px;
+}
+
+mat-checkbox {
+  &.mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background {
+    background: #42a5f5;
+  }
+  &.mat-checkbox-disabled .mat-checkbox-label {
+    color: $light-text;
+  }
+}
+
+.category-format {
+  margin: 5px;
+}
+
+.editing-names {
+  margin-top: 9px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.expand-all {
+  position: absolute;
+  right: 0;
+  margin-top: -12px;
+}
+
+.title-text {
+  align-self: flex-start;
+}
+
+.card-spacing {
+  margin-top: 10px;
+}
+
+.advanced-settings {
+  margin: 20px 0 0 0;
+}
+
+.resolution {
+  padding: 10px;
+}
+
+.invalid {
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 3px;
+  color: $light-text;
+  background-color: $warning;
+}
+.invalid-input {
+  color: $light-text;
+  background-color: $warning;
+  border-radius: 3px;
+}
+
+.resolution-input-card {
+  margin-bottom: 10px;
+  padding: 8px 5px;
+}
+
+.allowable-next-statuses {
+  margin-left: 50px;
+}
+
+.details-drawer-container {
+  min-height: 165px;
+}
+
+.mat-drawer,
+.mat-drawer-container {
+  background-color: transparent;
+}
+
+.mat-drawer {
+  padding: 0 0 15px 0;
+}
+
+.mat-list .mat-list-item .mat-list-item-content {
+  padding: 0;
+}
+
+.details-drawer-list {
+  width: 100%;
+  padding-top: 0;
+}
+
+.drawer-content {
+  width: 100%;
+  padding: 0px 16px;
+}
+
+.action-first {
+  margin-top: 0px;
+}
+.action-last {
+  margin-bottom: 0px;
+}
+
+.right-justify {
+  flex: 1 1 auto;
+}

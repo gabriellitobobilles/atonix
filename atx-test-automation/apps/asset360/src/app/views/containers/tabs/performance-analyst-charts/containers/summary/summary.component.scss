@@ -1,0 +1,26 @@
+.line-legend {
+  height: 14px;
+  width: 14px;
+  display: inline-block;
+}
+
+.line-text {
+  white-space: nowrap;
+  font-size: 14px;
+  display: inline-block;
+  overflow: hidden;
+  margin-left: 3px;
+}
+.summary-charts {
+  padding: 10px 20px;
+}
+.progress-bar {
+  padding: 0;
+  margin: 0;
+}
+
+.legend-row {
+  width: 90%;
+  white-space: nowrap;
+  line-height: 1;
+}

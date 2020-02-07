@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="5" time="150.589">
+ <testsuite name="19609: Data Explorer - Relative Pinning" timestamp="2020-01-13T21:09:04" hostname="localhost" time="150.589" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+  <testcase classname="19609: Data Explorer - Relative Pinning" name="Step 1:  Add new chart… add new data, at least 2 series" time="56.478" />
+  <testcase classname="19609: Data Explorer - Relative Pinning" name="Step 2:  Save pin from toolbar." time="5.044" />
+  <testcase classname="19609: Data Explorer - Relative Pinning" name="Step 3:  Create a Relative Pinned chart." time="23.894" />
+  <testcase classname="19609: Data Explorer - Relative Pinning" name="Step 4:  Returning back to default chart setting" time="10.804" />
+  <testcase classname="19609: Data Explorer - Relative Pinning" name="Step 5:  Delete Relative Pinned Chart" time="17.002" />
+ </testsuite>
+</testsuites>

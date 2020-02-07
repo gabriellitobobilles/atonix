@@ -1,0 +1,2 @@
+import { ElementFinder } from "protractor";
+

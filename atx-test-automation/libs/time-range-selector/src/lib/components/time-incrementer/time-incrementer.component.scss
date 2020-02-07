@@ -1,0 +1,29 @@
+.trDialogPopupButton {
+  display: inline-block;
+  position: absolute;
+  vertical-align: middle;
+  bottom: 0px;
+}
+
+.trButton {
+  display: block;
+  float: left;
+  margin-left: 0;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  padding-top: 2px;
+}
+.trButton:focus,
+.trButton:active {
+  background-color: #ccc;
+}
+
+.trButtonCalendar {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}

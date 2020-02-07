@@ -1,0 +1,9 @@
+@import '_variables';
+
+.invalid {
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 3px;
+  color: $light-text;
+  background-color: $warning;
+}

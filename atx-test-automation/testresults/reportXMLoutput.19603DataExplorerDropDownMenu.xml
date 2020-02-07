@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="2" time="125.689">
+ <testsuite name="19603: Data Explorer - Drop Down Menu" timestamp="2020-01-13T21:01:50" hostname="localhost" time="125.689" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="19603: Data Explorer - Drop Down Menu" name="step 1: Load different charts - Verify timing is normal" time="57.877" />
+  <testcase classname="19603: Data Explorer - Drop Down Menu" name="step 2: Delete charts" time="34.465" />
+ </testsuite>
+</testsuites>

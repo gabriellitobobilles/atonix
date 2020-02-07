@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<TestRun xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010" id="77dcad35-fcd3-4e9b-8480-665e2a7be335" name="Protractor Test Results" runUser="Gabriel Bobilles">
+  <Times creation="2020-01-13 20:41:05" queuing="2020-01-13 20:41:05" start="2020-01-13 20:41:05" finish="2020-01-13 20:49:14"/>
+  <TestSettings name="Default Test Settings" id="ce1a4cfb-64fa-4d63-8815-e9984737a62c">
+    <Deployment runDeploymentRoot="Performance Analyst - Navigator"/>
+  </TestSettings>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0"/>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest id="57cd25d2-00d2-4326-986b-6aa8c99d62e0" name="Performance Analyst - Navigator - 19581: Performance Analyst - Navigator - ">
+      <Description>19581: Performance Analyst - Navigator - </Description>
+      <Execution id="5557c3fb-8f62-45b5-bc4a-8e2d994e0f0a"/>
+      <TestMethod codeBase="protractor-jasmine" className="Performance Analyst - Navigator" name="19581: Performance Analyst - Navigator"/>
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList id="8c84fa94-04c1-424b-9868-57a2d4851a1d" name="Results Not in a List"/>
+    <TestList id="19431567-8539-422a-85d7-44ee4e166bda" name="All Loaded Results"/>
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="57cd25d2-00d2-4326-986b-6aa8c99d62e0" executionId="5557c3fb-8f62-45b5-bc4a-8e2d994e0f0a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"/>
+  </TestEntries>
+  <Results>
+    <UnitTestResult testId="57cd25d2-00d2-4326-986b-6aa8c99d62e0" testName="Performance Analyst - Navigator - 19581: Performance Analyst - Navigator - " testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" computerName="Lenovo_ThinkPad_0120" outcome="Passed" startTime="2020-01-13 20:41:05" endTime="2020-01-13 20:49:14" duration="00:08:09.011" executionId="5557c3fb-8f62-45b5-bc4a-8e2d994e0f0a" relativeResultsDirectory="5557c3fb-8f62-45b5-bc4a-8e2d994e0f0a"/>
+  </Results>
+</TestRun>

@@ -1,0 +1,64 @@
+<div [formGroup]="workflowForm">
+  <ng-container *ngIf="mapsForAsset; else: noMapsYet">
+    <div class="select-settings update-map-details">
+      <div>
+        <ng-container *ngIf="formState !== WorkflowFormStateType.Viewing; else: viewingMapName">
+          <div>
+            <label>Map:</label>
+            <select formControlName="map" (change)="onChangeMap($event.target.value)" [value]="workflowForm.get('map').value">
+              <option *ngFor="let map of (mapsForAsset | keyvalue)" [value]="map.key">{{ map.key }}</option>
+            </select>
+            <mat-error class="invalid" *ngIf="showValidationMessages && errors['mapStatusDetails']['map']">
+              {{ errors['mapStatusDetails']['map'] }}
+            </mat-error>
+          </div>
+          <div>
+            <label>Asset Class Type:</label>
+            <select formControlName="assetClassType" [value]="workflowForm.get('assetClassType').value">
+              <option *ngFor="let assets of getAssets(workflowForm.get('map').value)" [value]="assets.AssetClassTypeID">{{
+                assets.AssetClassTypeName
+              }}</option>
+            </select>
+            <mat-error class="invalid" *ngIf="showValidationMessages && errors['mapStatusDetails']['assetClassType']">
+              {{ errors['mapStatusDetails']['assetClassType'] }}
+            </mat-error>
+          </div>
+          <div>
+            <label>Status:</label>
+            <select formControlName="milestone" [value]="workflowForm.get('milestone').value">
+              <option
+                *ngFor="let milestone of getMileStones(workflowForm.get('map').value, workflowForm.get('assetClassType').value)"
+                [value]="milestone.Id"
+                >{{ milestone.Label }}</option
+              >
+            </select>
+            <mat-error class="invalid" *ngIf="showValidationMessages && errors['mapStatusDetails']['milestone']">
+              {{ errors['mapStatusDetails']['milestone'] }}
+            </mat-error>
+          </div>
+        </ng-container>
+
+        <ng-template #viewingMapName>
+          <div><label>Map:</label> {{ workflowForm.get('map').value }}</div>
+          <div>
+            <label>Asset Class Type: </label>
+            {{ displayAssetClassType(workflowForm.get('map').value, workflowForm.get('assetClassType').value) }}
+          </div>
+          <div>
+            <label>Status: </label>
+            {{
+              displayStatus(
+                workflowForm.get('map').value,
+                workflowForm.get('assetClassType').value,
+                workflowForm.get('milestone').value
+              )
+            }}
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #noMapsYet>
+    <mat-progress-bar id="asset360-progress-bar" color="accent" mode="indeterminate"></mat-progress-bar>
+  </ng-template>
+</div>

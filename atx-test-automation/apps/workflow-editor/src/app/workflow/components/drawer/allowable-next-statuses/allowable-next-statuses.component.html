@@ -1,0 +1,16 @@
+<mat-card class="drawer-content">
+  <mat-card-header> Allowable Next Statuses </mat-card-header>
+  <mat-list role="list">
+    <ng-container *ngFor="let status of allowedNextStatuses.controls; let i = index">
+      <mat-list-item>
+        <mat-checkbox
+          [ngClass]="{ 'disable-checkbox': formState === WorkflowFormStateType.Viewing || myIndex === i }"
+          [formControl]="status"
+          [checked]="myIndex === i || status.value"
+        >
+          {{ statusNames[i] }}
+        </mat-checkbox>
+      </mat-list-item>
+    </ng-container>
+  </mat-list>
+</mat-card>

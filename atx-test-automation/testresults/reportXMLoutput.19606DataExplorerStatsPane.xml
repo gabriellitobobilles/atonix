@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="3" time="173.493">
+ <testsuite name="19606: Data Explorer - Stats Pane" timestamp="2020-01-13T21:04:05" hostname="localhost" time="173.493" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+  <testcase classname="19606: Data Explorer - Stats Pane" name="step 1: Pin stats pane" time="45.129" />
+  <testcase classname="19606: Data Explorer - Stats Pane" name="step 2: Navigate through different series" time="11.626" />
+  <testcase classname="19606: Data Explorer - Stats Pane" name="step 3: Export data to excel" time="66.541" />
+ </testsuite>
+</testsuites>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="9" time="403.361">
+ <testsuite name="19604: Data Explorer - Hearder - Buttons" timestamp="2020-01-13T21:01:58" hostname="localhost" time="403.361" errors="0" tests="9" skipped="0" disabled="0" failures="0">
+  <testcase classname="19604: Data Explorer - Hearder - Buttons" name="step 1: Add a variable - verify there is only one chart by that name and it has the edit" time="93.941" />
+  <testcase classname="19604: Data Explorer - Hearder - Buttons" name="step 2: Add a variable - save as chart with new name - verify there are two charts and both are correct" time="35.003" />
+  <testcase classname="19604: Data Explorer - Hearder - Buttons" name="step 3: Save chart to different asset" time="45.627" />
+  <testcase classname="19604: Data Explorer - Hearder - Buttons" name="step 4: Add a new chart, add variables, save" time="34.596" />
+  <testcase classname="19604: Data Explorer - Hearder - Buttons" name="step 5: Select a time period in the past, verify As Shown and Live links take you to correct times" time="14.83" />
+  <testcase classname="19604: Data Explorer - Hearder - Buttons" name="step 6: Expand to full screen" time="0.595" />
+  <testcase classname="19604: Data Explorer - Hearder - Buttons" name="step 7: Verify &quot;click and drag&quot; zoom works properly" time="9.798" />
+  <testcase classname="19604: Data Explorer - Hearder - Buttons" name="step 8: Download data to excel" time="62.244" />
+  <testcase classname="19604: Data Explorer - Hearder - Buttons" name="step 9: Download Chart Content data to excel" time="75.607" />
+ </testsuite>
+</testsuites>

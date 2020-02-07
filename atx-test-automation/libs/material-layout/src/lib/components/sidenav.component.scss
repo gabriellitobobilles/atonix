@@ -1,0 +1,36 @@
+@import '_variables';
+
+@mixin sidenav-theme($material-theme, $atx-theme) {
+  $toolbar-button-background: map-get($atx-theme, toolbar-button-background);
+  $sidenav-color: map-get($atx-theme, atonix-foreground);
+  $border-highlights: map-get($atx-theme, border-highlights);
+
+  mat-sidenav {
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    background: $sidenav-color !important;
+    border-color: $border-highlights;
+    height: calc(100% - #{$workflow-bottom-margin});
+    z-index: 1;
+    padding: 5px;
+  }
+
+  .scrollcontainer {
+    overflow-y: auto;
+  }
+  .scrollcontainer::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: $sidenav-color;
+  }
+
+  .scrollcontainer::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+    background-color: $sidenav-color;
+  }
+
+  .scrollcontainer::-webkit-scrollbar-thumb {
+    background-color: $workflow-dark-card;
+  }
+}

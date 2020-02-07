@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="7" time="194.172">
+ <testsuite name="19605: Data Explorer - Chart Settings" timestamp="2020-01-13T21:02:20" hostname="localhost" time="194.172" errors="0" tests="7" skipped="0" disabled="0" failures="0">
+  <testcase classname="19605: Data Explorer - Chart Settings" name="step 1: Change scale of axes, click ok, verify" time="43.424" />
+  <testcase classname="19605: Data Explorer - Chart Settings" name="step 2: Change scale of axes back to auto, click ok, verify" time="8.118" />
+  <testcase classname="19605: Data Explorer - Chart Settings" name="step 3: Filter data (Before saving anything) by min/max with and without apply to all selected - verify chart responds" time="27.482" />
+  <testcase classname="19605: Data Explorer - Chart Settings" name="step 4: Filter with multiple &quot;Apply to All&quot; Filters- should work as &quot;And&quot; logic- current bug" time="20.815" />
+  <testcase classname="19605: Data Explorer - Chart Settings" name="step 5: Change chart and series type" time="33.173" />
+  <testcase classname="19605: Data Explorer - Chart Settings" name="step 6: Add design curve" time="8.365" />
+  <testcase classname="19605: Data Explorer - Chart Settings" name="step 7: Move one series to the x-axis" time="8.763" />
+ </testsuite>
+</testsuites>

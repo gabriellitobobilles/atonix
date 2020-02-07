@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1" />
+    <meta charset="utf-8" />
+
+    <title>Issues Management</title>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+	<link rel="manifest" href="/manifest.json" />
+	<meta name="theme-color" content="#ffffff" />
+
+    <script src="/Common/ApplicationInsights.js"></script>
+
+    <link href="https://cdn-powerplantmd-com.s3.amazonaws.com/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="https://cdn-powerplantmd-com.s3.amazonaws.com/toastr/2.1.1/toastr.min.css" rel="stylesheet" />
+
+    <link href="../Content/bvbootstrap.css" rel="stylesheet" />
+    <link href="../Content/bvStyles.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="../bundles/core.vendor.bundle.js"></script>
+    <script type="text/javascript" src="../bundles/charts.vendor.bundle.js"></script>
+    <script type="text/javascript" src="../bundles/issuesmanagement.bundle.js"></script>  
+
+    <style>
+        [ng-cloak] {
+            display: none;
+        }
+        
+        .tabIcon {
+            padding-top: 3px;
+        }
+
+        .scorecardTitleRow {
+            width: 100%;
+        }
+
+        .scorecardTitleSection {
+            display: inline-block;
+            margin-right: 300px;
+            text-transform: uppercase;
+        }
+
+        .scorecardSummaryTableSection {
+            /*display:inline-block;
+            width:299px;*/
+            /*float:right;
+            font-size:18px;*/
+        }
+
+            .scorecardSummaryTableSection table {
+                color: white;
+            }
+
+            .scorecardSummaryTableSection .rowHeader {
+                background-color: lightslategray;
+                border: 1px solid white;
+                text-align: left;
+                white-space: nowrap;
+                padding-right: 5px;
+            }
+
+            .scorecardSummaryTableSection .colHeader {
+                background-color: lightgray;
+                border: 1px solid white;
+                text-align: center;
+                border-radius: 5px 0 5px 0;
+            }
+
+            .scorecardSummaryTableSection .cell {
+                border: 1px solid white;
+                text-align: center;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+        .scorecardSummaryRow {
+        }
+
+            .scorecardSummaryRow table {
+                width: 100%;
+                background-color: transparent;
+            }
+
+            .scorecardSummaryRow .colHeader {
+                text-align: center;
+                overflow: hidden;
+                -ms-text-overflow: ellipsis;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+                font-size: 10px;
+            }
+
+            .scorecardSummaryRow .rowHeader {
+                text-align: right;
+                height: 40px;
+                overflow: hidden;
+                width: 50px;
+                font-size: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+            }
+
+            .scorecardSummaryRow .stoplight {
+                height: 50px;
+                margin: 5px;
+            }
+
+        .summaryTableColumnTitle {
+            width: 100px;
+        }
+
+        .summaryTableColumnStoplight {
+        }
+
+        .fixedRowHeader {
+            height: 40px;
+        }
+
+        .filterEditor {
+            width:75%;
+            top:30px;
+            left:0;
+            right:0;
+            margin-left:auto;
+            margin-right:auto;
+            max-height: 86%;
+            overflow-x:hidden;
+        }            
+    </style>
+</head>
+<body ng-app="issuesManagementApp" ng-controller="issuesManagementController as baseVM">
+
+
+    <bv-double-pane bv-title="{{baseVM.getCurrentAppContextName(baseVM.appContext)}}" app-context="baseVM.appContext" contextchanged="baseVM.contextChanged(newAppContext)" westsize="225">
+        <panecenter>
+            <ul class="nav nav-tabs">
+                <li ng-class="{ active : baseVM.activeTab === 'Issues'}" ng-hide="baseVM.hideIssuesTab" > 
+                    <a ng-click="baseVM.setActiveTab('Issues')">{{baseVM.tab1Title}}</a>
+                </li>
+                <li ng-class="{ active : baseVM.activeTab === 'Scorecard'}" ng-hide="baseVM.hideScorecardTab">
+                    <a ng-click="baseVM.setActiveTab('Scorecard')">Scorecard</a></li>
+                <li ng-if="baseVM.canConfigureWorkflow" class="pull-right">
+                    <a class="btn btn-default" ng-href="/WorkflowEditor/categories?asset={{ baseVM.selectedAsset.GlobalId }}" target="_blank" style="line-height: 1.0">Configure Workflow</a> 
+                </li>
+            </ul>
+       
+            <div class="tabBody" ng-class="{'activeTabBody' : baseVM.activeTab === 'Issues'}" ng-controller="issuesTabController as issuesVM">
+                <div style="white-space:nowrap;height:192px;">
+                    <div class="container-fluid no-padding no-margin">
+                        <div class="row-fluid no-padding no-margin ">
+                            <div class="col-xs-3 nested-transparent-panel no-padding no-margin" style="margin-left:10px;margin-right:10px;width:32.5%">
+                                <div bv-hchart chart-name="issues_pie1" loading="{{issuesVM.pie1Loading}}"></div>
+                            </div>
+                            <div class="col-xs-5 nested-transparent-panel no-padding no-margin" style="width:calc(35% - 40px);">
+                                <div bv-hchart chart-name="issues_pie2" loading="{{issuesVM.pie2Loading}}"></div>
+                            </div>
+                            <div class="col-xs-3 nested-transparent-panel no-padding no-margin" style="margin-left:10px;margin-right:10px;width:32.5%">
+                                <div bv-hchart chart-name="issues_pie3" loading="{{issuesVM.pie3Loading}}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix" style="height:26px">
+                    <div class="pull-right" style="padding-right: 5px"><a ng-click="issuesVM.openNewIssue()" class="cursor-hand"><i class="fa fa-plus" title="Open New {{baseVM.issueLabelB}}"></i></a></div>
+                    <div class="pull-right" style="padding-right: 5px"><a ng-click="issuesVM.downloadIssues()" class="cursor-hand"><i class="fa fa-download" title="Download Table Contents"></i></a></div>
+                </div>
+                <div ng-if="baseVM.appContext === 'Issues Management'" bv-issues-list style="display:block;height:calc(100% - 210px);" issueid="vm.selectedIssueID" asset-id="{{baseVM.selectedAssetID}}" 
+                    filter-parameters="issuesVM.filterParameters" fixed-filter="issuesVM.fixedFilter" doubleclick="baseVM.openSnapshot(issue)" 
+                    fields="AssetIssueID, IssueTitle, ImpactTotal, ActivityStatus, ResolutionStatus, CreateDate, AssignedTo, OpenDuration, ScorecardSelector, CategoryDesc, IssueTypeDesc, AssetTypeDesc, Priority, CreatedBy, ChangedBy, ChangeDate, OpenDate, CloseDate, ResolveBy, Keyword"
+                    show-type="baseVM.showType" issue-label="{{baseVM.issueLabelB}}" status-label="{{baseVM.statusLabel}}" >
+                </div>
+                <div ng-if="baseVM.appContext === 'Work Management' || baseVM.appContext === 'Resolve'" bv-issues-list style="display:block;height:calc(100% - 210px);" issueid="vm.selectedIssueID" asset-id="{{baseVM.selectedAssetID}}" 
+                    filter-parameters="issuesVM.filterParameters" fixed-filter="issuesVM.fixedFilter" doubleclick="baseVM.openSnapshot(issue)" 
+                    fields="CategoryDesc, AssetIssueID, IssueTitle, State, Status, Priority, ResolveBy, CreateDate, OpenDuration, AssignedTo, AssetTypeDesc, ImpactTotal, ScorecardSelector, CreatedBy, ChangedBy, ChangeDate, OpenDate, CloseDate, Keyword"
+                    show-type="baseVM.showType" issue-label="{{baseVM.issueLabelB}}" status-label="{{baseVM.statusLabel}}" > 
+                </div>
+            </div>
+            <div class="tabBody" ng-class="{'activeTabBody' : baseVM.activeTab === 'Scorecard'}" ng-controller="scorecardTabController as scorecardVM" style="overflow-y:auto;overflow-x:hidden;">
+                <div class="scorecardTitleRow">
+                    <div class="container-fluid no-padding no-margin nested-transparent-panel">
+                        <div class="row-fluid no-padding no-margin">
+                            <div class="col-xs-9 no-padding no-margin scorecardTitleSection" style="margin-left:5px;margin-right:5px;width:calc(100% - 400px);">
+                                <div class="scorecardHeaderTitle">{{scorecardVM.data.Asset.AssetDesc}} - {{baseVM.issueLabelA}} Scorecard</div>
+                                <div class="scorecardHeaderSubTitle" style="margin-left:15px;">{{scorecardVM.data.Date | date : 'medium'}}</div>
+                                <div ng-show="scorecardVM.data.Asset" style="margin-left:15px; margin-top:15px;">
+                                    <button class="btn btn-default" ng-click="scorecardVM.refresh()" style="margin-right:10px;width:125px;" ng-hide="scorecardVM.saved">Refresh</button>
+                                    <button class="btn btn-default" ng-click="scorecardVM.print()" style="margin-right:10px;width:125px;" ng-hide="scorecardVM.saved">Open Print View</button>
+                                    <button class="btn btn-default" ng-click="scorecardVM.save()" style="margin-right:10px;width:125px;" ng-hide="scorecardVM.saved">Save Scorecard</button>
+                                    <div style="margin-right:10px;width:125px;display:inline-block;padding-bottom:0;" class="btn-group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Load Scorecard <span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li ng-show="scorecardVM.saved"><a ng-click="scorecardVM.refresh()">Load Latest</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li ng-repeat="savedScorecard in scorecardVM.savedScorecards"><a ng-click="scorecardVM.loadSavedScorecard(savedScorecard.ScorecardId)">{{savedScorecard.Timestamp | date : 'medium' }}</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 no-padding no-margin scorecardSummaryTableSection" ng-hide="scorecardVM.loading" style="width:350px;margin-top:15px;margin-bottom:0;">
+                                <table class="table table-condensed table-striped issueTable">
+                                    <thead><tr class="darkTableHeader"><td class="colLarge"></td><td class="uppercase text-center darkTableHeaderCell colXSmall">YTD</td><td class="uppercase text-center darkTableHeaderCell colXSmall">Total</td></tr></thead> <!-- style="background-color:#2b2e33;" -->
+                                    <tr class="text-dark"><td class="lightTableCell text-left colLarge">Total Created {{baseVM.issueLabelB}}s:</td><td class="lightTableCell text-right colXSmall">{{scorecardVM.data.CreatedYTD}}</td><td class="lightTableCell text-right colXSmall">{{scorecardVM.data.CreatedTotal}}</td></tr>
+                                    <tr class="text-dark"><td class="lightTableCell text-left colLarge">Total Resolved {{baseVM.issueLabelB}}s:</td><td class="lightTableCell text-right colXSmall">{{scorecardVM.data.ResolvedYTD}}</td><td class="lightTableCell text-right colXSmall">{{scorecardVM.data.ResolvedTotal}}</td></tr>
+                                    <tr class="text-dark"><td class="lightTableCell text-left colLarge">Total Impact Cost:</td><td class="lightTableCell text-right colXSmall">{{scorecardVM.data.ImpactYTD | currency : '$' : 0}}</td><td class="lightTableCell text-right colXSmall">{{scorecardVM.data.ImpactTotal | currency : '$' : 0}}</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pieRow">
+                    <div class="container-fluid no-padding no-margin" style="margin-top:10px;">
+                        <div class="row-fluid no-padding no-margin ">
+                            <div class="col-xs-3 nested-transparent-panel no-padding no-margin" style="margin-left:10px;margin-right:10px;width:32.5%">
+                                <div bv-hchart chart-name="scorecard_pie1" loading="{{scorecardVM.loading}}" class="pieContainer"></div>
+                            </div>
+                            <div class="col-xs-5 nested-transparent-panel no-padding no-margin" style="width:calc(35% - 40px);">
+                                <div bv-hchart chart-name="scorecard_pie2" loading="{{scorecardVM.loading}}" class="pieContainer"></div>
+                            </div>
+                            <div class="col-xs-3 nested-transparent-panel no-padding no-margin" style="margin-left:10px;margin-right:10px;width:32.5%">
+                                <div bv-hchart chart-name="scorecard_pie3" loading="{{scorecardVM.loading}}" class="pieContainer"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="container-fluid no-padding no-margin" style="margin-top:10px;">
+                        <div class="row-fluid no-padding no-margin ">
+                            <div class="col-xs-12 nested-transparent-panel no-padding no-margin" style="margin-left:10px;padding:10px;width:calc(100% - 40px);">
+                                <div class="scorecardSummaryRow">
+                                    <div class="tab-label">Asset Status based on Impact Cost</div>
+                                    <table style="table-layout:fixed; ">
+                                        <colgroup>
+                                            <col class="summaryTableColumnTitle" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[0] == null}" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[1] == null}" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[2] == null}" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[3] == null}" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[4] == null}" />
+                                            <col class="summaryTableColumnTitle" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[0] == null}" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[1] == null}" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[2] == null}" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[3] == null}" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[4] == null}" />
+                                            <col class="summaryTableColumnTitle" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[0] == null}" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[1] == null}" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[2] == null}" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[3] == null}" />
+                                            <col class="summaryTableColumnStoplight" ng-class="{'colHide' : scorecardVM.impacts[4] == null}" />
+                                        </colgroup>
+                                        <tr>
+                                            <td></td>
+                                            <td class="colHeader">{{scorecardVM.impacts[0].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td class="colHeader">{{scorecardVM.impacts[1].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td class="colHeader">{{scorecardVM.impacts[2].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td class="colHeader">{{scorecardVM.impacts[3].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td class="colHeader">{{scorecardVM.impacts[4].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td></td>
+                                            <td class="colHeader">{{scorecardVM.impacts[0].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td class="colHeader">{{scorecardVM.impacts[1].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td class="colHeader">{{scorecardVM.impacts[2].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td class="colHeader">{{scorecardVM.impacts[3].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td class="colHeader">{{scorecardVM.impacts[4].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td></td>
+                                            <td class="colHeader">{{scorecardVM.impacts[0].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td class="colHeader">{{scorecardVM.impacts[1].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td class="colHeader">{{scorecardVM.impacts[2].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td class="colHeader">{{scorecardVM.impacts[3].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                            <td class="colHeader">{{scorecardVM.impacts[4].AssetIssueImpactCategoryAndTypeDesc}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="rowHeader"><div class="fixedRowHeader">{{scorecardVM.data.Children[0].Asset.AssetAbbrev}}</div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[0].impact[0]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[0].impact[1]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[0].impact[2]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[0].impact[3]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[0].impact[4]"></div></td>
+                                            <td class="rowHeader"><div class="fixedRowHeader">{{scorecardVM.data.Children[4].Asset.AssetAbbrev}}</div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[4].impact[0]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[4].impact[1]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[4].impact[2]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[4].impact[3]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[4].impact[4]"></div></td>
+                                            <td class="rowHeader"><div class="fixedRowHeader">{{scorecardVM.data.Children[8].Asset.AssetAbbrev}}</div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[8].impact[0]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[8].impact[1]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[8].impact[2]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[8].impact[3]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[8].impact[4]"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="rowHeader"><div class="fixedRowHeader">{{scorecardVM.data.Children[1].Asset.AssetAbbrev}}</div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[1].impact[0]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[1].impact[1]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[1].impact[2]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[1].impact[3]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[1].impact[4]"></div></td>
+                                            <td class="rowHeader"><div class="fixedRowHeader">{{scorecardVM.data.Children[5].Asset.AssetAbbrev}}</div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[5].impact[0]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[5].impact[1]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[5].impact[2]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[5].impact[3]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[5].impact[4]"></div></td>
+                                            <td class="rowHeader"><div class="fixedRowHeader">{{scorecardVM.data.Children[9].Asset.AssetAbbrev}}</div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[9].impact[0]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[9].impact[1]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[9].impact[2]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[9].impact[3]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[9].impact[4]"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="rowHeader"><div class="fixedRowHeader">{{scorecardVM.data.Children[2].Asset.AssetAbbrev}}</div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[2].impact[0]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[2].impact[1]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[2].impact[2]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[2].impact[3]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[2].impact[4]"></div></td>
+                                            <td class="rowHeader"><div class="fixedRowHeader">{{scorecardVM.data.Children[6].Asset.AssetAbbrev}}</div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[6].impact[0]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[6].impact[1]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[6].impact[2]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[6].impact[3]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[6].impact[4]"></div></td>
+                                            <td class="rowHeader"><div class="fixedRowHeader">{{scorecardVM.data.Children[10].Asset.AssetAbbrev}}</div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[10].impact[0]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[10].impact[1]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[10].impact[2]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[10].impact[3]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[10].impact[4]"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="rowHeader"><div class="fixedRowHeader">{{scorecardVM.data.Children[3].Asset.AssetAbbrev}}</div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[3].impact[0]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[3].impact[1]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[3].impact[2]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[3].impact[3]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[3].impact[4]"></div></td>
+                                            <td class="rowHeader"><div class="fixedRowHeader">{{scorecardVM.data.Children[7].Asset.AssetAbbrev}}</div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[7].impact[0]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[7].impact[1]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[7].impact[2]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[7].impact[3]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[7].impact[4]"></div></td>
+                                            <td class="rowHeader"><div class="fixedRowHeader">{{scorecardVM.data.Children[11].Asset.AssetAbbrev}}</div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[11].impact[0]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[11].impact[1]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[11].impact[2]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[11].impact[3]"></div></td>
+                                            <td><div class="stoplight" ng-class="scorecardVM.data.Children[11].impact[4]"></div></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid no-padding no-margin" style="margin-top:10px;">
+                        <div class="row-fluid no-padding no-margin ">
+                            <div class="col-xs-12 nested-transparent-panel no-padding no-margin" style="margin-left:10px;padding:10px;width:calc(100% - 40px);">
+                                <div class="scorecardSummaryTableRow">
+                                    <table class="table table-bordered">
+                                        <colgroup>
+                                            <col />
+                                            <col />
+                                            <col />
+                                            <col />
+                                            <col />
+                                            <col style="max-width:100px;" />
+                                            <col />
+                                        </colgroup>
+                                        <tr>
+                                            <th style="padding:2px;"></th>
+                                            <th style="padding:2px;">Asset</th>
+                                            <th style="padding:2px;">Title</th>
+                                            <th style="padding:2px;">Priority</th>
+                                            <th style="padding:2px;">Impact</th>
+                                            <th style="padding:2px;">Short Summary</th>
+                                            <th style="padding:2px;"></th>
+                                        </tr>
+                                        <tbody ng-repeat="group in  scorecardVM.issueGroups">
+                                            <tr class="darkTableHeader">
+                                                <td class="uppercase text-left darkTableHeaderCell" style="padding:2px;"><i class="fa" ng-class="{'fa-plus-circle' : group.collapsed, 'fa-minus-circle' : !group.collapsed}" ng-click="group.collapsed = !group.collapsed"></i></td>
+                                                <td class="uppercase text-left darkTableHeaderCell" colspan="6" style="padding:2px;">{{group.title}} <small class="pull-right">({{group.items.length}} {{baseVM.issueLabelB}}s)</small></td>
+                                            </tr>
+                                            <tr ng-repeat="issue in group.items" ng-hide="group.collapsed" ng-click="scorecardVM.selectIssue(issue)" ng-dblclick="baseVM.openSnapshot(issue)" ng-class="{'selectedIssueRow' : issue === scorecardVM.selectedIssue}">
+                                                <td style="width:25px;"></td>
+                                                <td>{{issue.Asset}}</td>
+                                                <td>{{issue.IssueTitle}}</td>
+                                                <td>{{issue.Priority}}</td>
+                                                <!--
+                                        <td class="text-right">${{issue.ImpactTotal/1000 | number : 0}}k</td>
+                                        -->
+                                                <td class="text-right">{{issue.ImpactTotal | currency : '$' : 0}}</td>
+                                                <td>{{issue.ShortSummary}}</td>
+                                                <td ng-hide="scorecardVM.saved"><i class="fa fa-times-circle" style="cursor:default;" ng-click="scorecardVM.excludeIssue(group,issue)"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="scorecardIssueRow" ng-show="scorecardVM.selectedIssue">
+                                    <div bv-issue issue-id="{{scorecardVM.selectedIssue.AssetIssueID}}" asset-id="{{baseVM.selectedAssetID}}" issue-class="{{base.selectedIssueClass.AssetIssueClassTypeID}}" hide-buttons="{{true}}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </panecenter>
+        <panewest>
+            <div class="layout-transparent-panel" style="margin-bottom:6px;height:78px;">
+                <div class="transparent-panel-heading">{{baseVM.issueLabelA}} Class</div>
+                <div>
+                    <select ng-model="baseVM.selectedIssueClass" ng-options="opt.Description for opt in baseVM.classTypes track by opt.AssetIssueClassTypeID" style="color:black;width:100%">
+                        <option value="">All</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layout-transparent-panel" style="height:calc(100% - 80px);overflow:hidden;">
+                <div style="height:30px;">
+                    <div class="transparent-panel-heading" style="margin-bottom:5px;">Asset Navigator</div>
+                </div>
+                <div style="height:calc(100% - 5px);margin-top:5px;overflow:auto;">
+                    <bv-asset-tree asset-id="baseVM.selectedAssetID" selected-asset="baseVM.selectedAsset" collapseonselect="true" show-auto-complete="true"></bv-asset-tree>
+                </div>
+            </div>
+        </panewest>
+
+    </bv-double-pane>
+
+    <div class="visible-xs hidden-print well" style="margin: 20px; padding-bottom: 40px;">
+        <img style="width: 80%; max-width: 400px; " src="/content/responsive-lines3.png" />
+        <h2><span class="small uppercase">coming soon</span><br />ASSET360<sup>&reg;</sup> for mobile.</h2>
+        <p>For now, we recommend running this app on a larger tablet or desktop device. If you're on a desktop device, try increasing the size of your browser window and refreshing.</p>
+    </div>
+
+</body>
+</html>
+

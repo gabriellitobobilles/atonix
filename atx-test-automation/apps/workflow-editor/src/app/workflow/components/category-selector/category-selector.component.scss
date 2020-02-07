@@ -1,0 +1,37 @@
+@import '_variables';
+
+@mixin category-selector-theme($material-theme, $atx-theme) {
+  $workflow: map-get($atx-theme, workflow);
+  $card-text: map-get($workflow, small-card-text);
+  $card-bg: map-get($workflow, small-card-background);
+  .work-management {
+    background: $card-bg;
+    color: $card-text;
+  }
+}
+
+.mat-action-button {
+  background: $atonix-dark-color;
+}
+
+.category-buttons {
+  margin: 10px;
+}
+mat-card-title {
+  padding: 0;
+  margin: 0;
+}
+.workflow-progress-bar {
+  padding-top: 10px;
+  margin: auto;
+  box-sizing: content-box;
+}
+
+.work-management {
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.small {
+  margin-left: 10px;
+}

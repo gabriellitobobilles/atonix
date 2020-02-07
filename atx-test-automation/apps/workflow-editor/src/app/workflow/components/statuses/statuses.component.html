@@ -1,0 +1,306 @@
+<div class="row" *ngIf="workflowForm">
+  <div [className]="settingsOpen ? 'col-md-8' : 'col-md-12'">
+    <mat-card class="work-management">
+      <mat-card-title>
+        {{ workflowForm.value.categoryDescription }}
+        <ng-container *ngIf="showSettingsButton">
+          <button
+            type="button"
+            mat-icon-button
+            mat-mini-fab
+            color="primary"
+            title="Category Settings"
+            class="small settings-button"
+            (click)="categorySettingsClicked()"
+          >
+            <fa-icon [icon]="faIcons.faCog"></fa-icon>
+          </button>
+        </ng-container>
+        <mat-divider class="top-divider"></mat-divider>
+      </mat-card-title>
+      <mat-card-content class="card-spacing">
+        <!-- Resolution Status   ------------------------- -->
+        <h3 class="mat-h3">
+          Resolution Statuses
+          <button type="button" mat-icon-button class="expand-all" title="Expand All" (click)="toggleExpandAll()">
+            <ng-container *ngIf="expandAllAccordions; else: collapseAll">
+              <fa-icon [icon]="faIcons.faCaretUp"></fa-icon>
+            </ng-container>
+            <ng-template #collapseAll> <fa-icon [icon]="faIcons.faCaretDown"></fa-icon> </ng-template>
+          </button>
+        </h3>
+        <ng-container *ngIf="showValidationMessages && validationMessages['resolutionStatuses']['messages']">
+          <mat-error class="invalid"> {{ validationMessages['resolutionStatuses']['messages'] }} </mat-error>
+        </ng-container>
+
+        <ng-container *ngFor="let item of (workflowForm.controls['resolutionStatuses'] | asFormArray).controls; let i = index">
+          <form [formGroup]="item">
+            <ng-container *ngIf="validationMessages['resolutionStatuses']['controls'][i]['resolutionStatusName']">
+              <mat-error class="invalid">
+                {{ validationMessages['resolutionStatuses']['controls'][i]['resolutionStatusName'] }}
+              </mat-error>
+            </ng-container>
+
+            <mat-expansion-panel [expanded]="expandAllAccordions">
+              <mat-expansion-panel-header>
+                <ng-container *ngIf="formState !== WorkflowFormStateType.Viewing; else: notEditingWorkflowForm">
+                  <!-- Resolution Status Editing or Adding   ------------------------- -->
+                  <button
+                    mat-icon-button
+                    [disabled]="i === 0 || editingWhichName !== null"
+                    (click)="buttonMoveResolutionStatusUp(i); $event.stopPropagation()"
+                  >
+                    <fa-icon [icon]="faIcons.faUp"></fa-icon>
+                  </button>
+                  <button
+                    mat-icon-button
+                    [disabled]="
+                      i === (workflowForm.controls['resolutionStatuses'] | asFormArray).controls.length - 1 ||
+                      editingWhichName !== null
+                    "
+                    (click)="buttonMoveResolutionStatusDown(i); $event.stopPropagation()"
+                  >
+                    <fa-icon [icon]="faIcons.faDown"></fa-icon>
+                  </button>
+
+                  <ng-container *ngIf="editingWhichName === i; else: notEditingStatusName">
+                    <span class="editing-names">
+                      <span (keydown)="handleEditNameKeyStroke($event)" (click)="$event.stopPropagation()">
+                        <input
+                          #resolutionNameInput
+                          type="text"
+                          placeholder="Resolution Status Name"
+                          formControlName="resolutionStatusName"
+                        />
+                      </span>
+                      &nbsp;
+                      <button
+                        mat-icon-button
+                        mat-mini-fab
+                        class="small"
+                        color="accent"
+                        (click)="buttonStopEditingName(); $event.stopPropagation()"
+                      >
+                        <fa-icon [icon]="faIcons.faCheck"></fa-icon>
+                      </button>
+                      &nbsp;
+                      <button
+                        mat-icon-button
+                        mat-mini-fab
+                        color="warn"
+                        class="small"
+                        (click)="buttonCancelEditingName(); $event.stopPropagation()"
+                      >
+                        <fa-icon [icon]="faIcons.faTimes"></fa-icon>
+                      </button>
+                    </span>
+                  </ng-container>
+                  <ng-template #notEditingStatusName>
+                    <span class="editing-names">
+                      {{ item.value.resolutionStatusName }} &nbsp;
+                      <button
+                        mat-mini-fab
+                        class="small"
+                        color="accent"
+                        [disabled]="editingWhichName !== null"
+                        (click)="buttonStartEditingName(i); $event.stopPropagation()"
+                      >
+                        <fa-icon [icon]="faIcons.faEdit"></fa-icon>
+                      </button>
+                      &nbsp;
+                    </span>
+                    <span class="right-justify"></span>
+                    <button
+                      type="button"
+                      mat-mini-fab
+                      color="warn"
+                      class="small editing-names"
+                      [disabled]="editingWhichName !== null"
+                      (click)="buttonRemoveResolutionStatus(i); $event.stopPropagation()"
+                    >
+                      <fa-icon [icon]="faIcons.faDelete"></fa-icon>
+                    </button>
+                  </ng-template>
+                </ng-container>
+
+                <ng-template #notEditingWorkflowForm>
+                  <mat-panel-title> {{ item.value.resolutionStatusName }} </mat-panel-title>
+                </ng-template>
+              </mat-expansion-panel-header>
+
+              <mat-drawer-container class="details-drawer-container">
+                <!-- actions / permissions / next statuses drawer -->
+                <mat-drawer mode="side" opened [disableClose]="true" class="details-drawer">
+                  <mat-list class="details-drawer-list">
+                    <mat-list-item>
+                      <ng-container *ngIf="selectedDrawerItemForStatus[i] === 0; else: actionNotSelected">
+                        <button class="details-drawer-list" mat-raised-button color="accent">
+                          Actions ({{ ((item | asFormGroup).controls['actions'] | asFormArray).length }})
+                        </button>
+                      </ng-container>
+                      <ng-template #actionNotSelected>
+                        <button class="details-drawer-list" mat-raised-button (click)="selectDrawerItemForStatus(0, i)">
+                          Actions ({{ ((item | asFormGroup).controls['actions'] | asFormArray).length }})
+                        </button>
+                      </ng-template>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <ng-container *ngIf="selectedDrawerItemForStatus[i] === 1; else: allowableNextStatusesNotSelected">
+                        <button class="details-drawer-list" mat-raised-button color="accent">Allowable Next Statuses</button>
+                      </ng-container>
+                      <ng-template #allowableNextStatusesNotSelected>
+                        <button class="details-drawer-list" mat-raised-button (click)="selectDrawerItemForStatus(1, i)">
+                          Allowable Next Statuses
+                        </button>
+                      </ng-template>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <ng-container *ngIf="selectedDrawerItemForStatus[i] === 2; else: permissionsNotSelected">
+                        <button class="details-drawer-list" mat-raised-button color="accent">Permissions</button>
+                      </ng-container>
+                      <ng-template #permissionsNotSelected>
+                        <button class="details-drawer-list" mat-raised-button (click)="selectDrawerItemForStatus(2, i)">
+                          Permissions
+                        </button>
+                      </ng-template>
+                    </mat-list-item>
+                  </mat-list>
+                </mat-drawer>
+                <mat-drawer-content>
+                  <ng-container *ngIf="selectedDrawerItemForStatus[i] === 0">
+                    <atx-category-actions
+                      [actions]="(item | asFormGroup).controls['actions']"
+                      [showValidationMessages]="showValidationMessages"
+                      [validationMessages]="validationMessages['resolutionStatuses']['controls'][i]['actions']"
+                      [formEditState]="formState"
+                      [expandAllAccordions]="expandAllAccordions"
+                      [resolutionStatusNames]="workflowForm.controls['resolutionStatuses']"
+                      [resolutionTransitionsAllowedFromMe]="(item | asFormGroup).controls['allowedNextStatuses'].value"
+                      [resolutionTransitionsAllowedToMe]="
+                        workflowForm.controls['resolutionStatuses'].value | valueFromEachObject: 'allowedNextStatuses'
+                      "
+                      [myResolutionStatusIndex]="i"
+                      [mapsForAsset]="mapsForAsset"
+                      [layerForMap]="layerForMap"
+                      (changeSelectedMap)="onChangeSelectedMap($event)"
+                      (deleteAction)="clickDeleteAction($event, i)"
+                      (addAction)="clickAddAction(i)"
+                      (actionTypeChange)="changeActionType($event, i)"
+                    >
+                    </atx-category-actions>
+                  </ng-container>
+                  <ng-container *ngIf="selectedDrawerItemForStatus[i] === 1">
+                    <atx-allowable-next-statuses
+                      [allowedNextStatuses]="(item | asFormGroup).controls['allowedNextStatuses']"
+                      [myIndex]="i"
+                      [formState]="formState"
+                      [statusNames]="workflowForm.controls['resolutionStatuses'] | valueFromEachGroup: 'resolutionStatusName'"
+                    >
+                    </atx-allowable-next-statuses>
+                  </ng-container>
+                  <ng-container *ngIf="selectedDrawerItemForStatus[i] === 2">
+                    <mat-card class="drawer-content"> <p>Permission settings coming soon...</p> </mat-card>
+                  </ng-container>
+                </mat-drawer-content>
+              </mat-drawer-container>
+            </mat-expansion-panel>
+          </form>
+        </ng-container>
+        <ng-container *ngIf="formState !== WorkflowFormStateType.Viewing">
+          <button mat-raised-button color="accent" (click)="buttonAddResolutionStatus()" style="margin-bottom:5px">
+            <fa-icon [icon]="faIcons.faAdd"></fa-icon>
+            Add Resolution Status
+          </button>
+        </ng-container>
+        <!-- Activity Statuses   ------------------------- -->
+        <h3 class="mat-h3">Issue Activity Statuses</h3>
+        <div class="resItems">
+          <ng-container
+            *ngFor="let item of (workflowForm.controls['issueActivityStatuses'] | asFormArray).controls; let i = index"
+          >
+            <mat-expansion-panel [expanded]="expandAllAccordions">
+              <mat-expansion-panel-header>
+                <mat-panel-title> {{ item.value.issueActivityStatusDesc }} </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-drawer-container class="details-drawer-container">
+                <mat-drawer mode="side" opened [disableClose]="true" class="details-drawer">
+                  <mat-list class="details-drawer-list">
+                    <mat-list-item>
+                      <ng-container *ngIf="selectedDrawerItemForStatus[numResolutionStatuses + i] === 0; else: actionNotSelected">
+                        <button class="details-drawer-list" mat-raised-button color="accent">
+                          Actions ({{ ((item | asFormGroup).controls['issueActivityStatusActions'] | asFormArray).length }})
+                        </button>
+                      </ng-container>
+                      <ng-template #actionNotSelected>
+                        <button
+                          class="details-drawer-list"
+                          mat-raised-button
+                          (click)="selectDrawerItemForStatus(0, i + numResolutionStatuses)"
+                        >
+                          Actions ({{ ((item | asFormGroup).controls['issueActivityStatusActions'] | asFormArray).length }})
+                        </button>
+                      </ng-template>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <ng-container
+                        *ngIf="selectedDrawerItemForStatus[numResolutionStatuses + i] === 1; else: permissionsNotSelected"
+                      >
+                        <button class="details-drawer-list" mat-raised-button color="accent">Permissions</button>
+                      </ng-container>
+                      <ng-template #permissionsNotSelected>
+                        <button
+                          class="details-drawer-list"
+                          mat-raised-button
+                          (click)="selectDrawerItemForStatus(1, i + numResolutionStatuses)"
+                        >
+                          Permissions
+                        </button>
+                      </ng-template>
+                    </mat-list-item>
+                  </mat-list>
+                </mat-drawer>
+                <mat-drawer-content>
+                  <ng-container *ngIf="selectedDrawerItemForStatus[i + numResolutionStatuses] === 0">
+                    <atx-category-actions
+                      [actions]="(item | asFormGroup).controls['issueActivityStatusActions']"
+                      [areIssueStatuses]="true"
+                      [formEditState]="formState"
+                      [expandAllAccordions]="expandAllAccordions"
+                      [showValidationMessages]="showValidationMessages"
+                      [validationMessages]="
+                        validationMessages['issueActivityStatuses']['controls'][i]['issueActivityStatusActions']
+                      "
+                      [mapsForAsset]="mapsForAsset"
+                      [layerForMap]="layerForMap"
+                      (changeSelectedMap)="onChangeSelectedMap($event)"
+                      (deleteAction)="clickDeleteAction($event, i + numResolutionStatuses)"
+                      (addAction)="clickAddAction(i + numResolutionStatuses)"
+                      (actionTypeChange)="changeActionType($event, i + numResolutionStatuses)"
+                    >
+                    </atx-category-actions>
+                  </ng-container>
+                  <ng-container *ngIf="selectedDrawerItemForStatus[i + numResolutionStatuses] === 1">
+                    <mat-card class="drawer-content"> <p>Permission settings coming soon...</p> </mat-card>
+                  </ng-container>
+                </mat-drawer-content>
+              </mat-drawer-container>
+            </mat-expansion-panel>
+          </ng-container>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <!-- When debugging, you'll want to use .getRawValue() instead of value, since it includes disabled statuses -->
+  </div>
+
+  <!-- Category Settings   ------------------------- -->
+  <ng-container *ngIf="settingsOpen">
+    <div class="col-md-4">
+      <atx-view-category-settings
+        [categoryDesc]="workflowForm.controls['categoryDescription'].value"
+        [issueClassDesc]="issueClassDesc"
+        [selectedAssetClassTypes]="selectedAssetClassTypes"
+        (closeSettingsClick)="categorySettingsClicked()"
+      ></atx-view-category-settings>
+    </div>
+  </ng-container>
+</div>

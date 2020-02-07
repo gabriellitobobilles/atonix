@@ -1,0 +1,67 @@
+<div id="assetTree" style="height:100%;">
+  <div class="transparent-panel-heading" style="position:relative;">Asset Navigator</div>
+  <form id="jumpTo" [formGroup]="form">
+    <div class="tree-selector" *ngIf="(showTreeSelector$ | async)">
+      <mat-select (selectionChange)="TreeSelectionChanged($event)" formControlName="selectedTreeValue">
+        <mat-option *ngFor="let tree of (trees$ | async)" [value]="tree.TreeId"> {{ tree.TreeName }} </mat-option>
+      </mat-select>
+    </div>
+    <div>
+      <mat-form-field>
+        <input
+          id="assetAutoComplete"
+          placeholder="Asset Search"
+          aria-label="Asset"
+          matInput
+          formControlName="assetAutoComplete"
+          [matAutocomplete]="auto"
+          (blur)="searchLostFocus()"
+          #autocomplete
+        />
+        <fa-icon [icon]="faSpinner" *ngIf="(autoCompletePending$ | async)" style="position:absolute;right:0;"></fa-icon>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of (autoCompleteAssets$ | async)"
+            [value]="option.AssetID"
+            (onSelectionChange)="autoCompleteSelection($event)"
+          >
+            {{ option.AssetDesc }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div style="height:calc(100% - 95px);padding:0px 3px 3px;overflow:auto;">
+    <div
+      *ngFor="let node of (nodes$ | async)"
+      class="assetTreeNode adhocTreeNode"
+      [style.padding-left.px]="node.Level * 10"
+      [ngClass]="{ 'top-level': node.Level === 0 }"
+    >
+      <div class="nodeItem mat-body-2" [ngClass]="{ selectedAsset: selectedNodeID === node.UniqueKey }" [ngSwitch]="node.Symbol">
+        <fa-icon [icon]="faCaretRight" *ngSwitchCase="'collapsed'" (mouseup)="expandOrCollapse(node)"></fa-icon>
+        <fa-icon [icon]="faCaretDown" *ngSwitchCase="'expanded'" (mouseup)="expandOrCollapse(node)"></fa-icon>
+        <fa-icon [icon]="faSpinner" *ngSwitchCase="'loading'" (mouseup)="expandOrCollapse(node)"></fa-icon>
+        <fa-icon
+          [icon]="faCaretRight"
+          *ngSwitchCase="'nothing'"
+          (mouseup)="expandOrCollapse(node)"
+          style="visibility:hidden;"
+        ></fa-icon>
+        <span (click)="select(node)">{{ node.NodeAbbrev }}</span>
+
+        <div *ngIf="(buttons$ | async)" class="assetTreeButtons">
+          <div
+            *ngFor="let b of (buttons$ | async)"
+            class="assetTreeButton"
+            [class]="b.class"
+            [ngClass]="{ hiddenButton: !b.show(node) }"
+            (click)="buttonClick(b, node)"
+            [title]="b.tooltip"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

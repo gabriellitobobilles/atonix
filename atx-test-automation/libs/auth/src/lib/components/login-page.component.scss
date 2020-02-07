@@ -1,0 +1,87 @@
+@import '_variables';
+.background {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: url('../../../../assets/shared-assets/images/johannasburg-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 110% 110%;
+}
+.login-card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 40px auto 0 auto;
+  width: 350px;
+  max-height: 100%;
+}
+
+.white-card {
+  mat-card-title {
+    color: black;
+  }
+  mat-card-subtitle {
+    color: black;
+  }
+  mat-card-content {
+    input {
+      color: black;
+    }
+    div {
+      color: black;
+    }
+  }
+  fa-icon {
+    color: black;
+  }
+  .placeholder {
+    color: black;
+  }
+  .mat-focused .placeholder {
+    color: black;
+  }
+  .mat-form-field {
+    width: 100%;
+    min-width: 300px;
+  }
+  button {
+    background-color: $accent;
+    color: $light-text;
+  }
+  .mat-flat-button {
+    background-color: white;
+    color: $accent;
+  }
+  mat-checkbox {
+    color: black;
+  }
+  .havacode {
+    color: black;
+  }
+
+  .alert-danger {
+    color: red;
+    border: 1px solid red;
+  }
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 30px $white-card inset;
+  -webkit-box-shadow: 0 0 0 30px $white-card inset;
+}
+
+.loginError {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: $warning;
+}
+
+.loginButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

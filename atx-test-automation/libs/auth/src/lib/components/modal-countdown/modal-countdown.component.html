@@ -1,0 +1,12 @@
+<div mat-dialog-title>Warning</div>
+<div mat-dialog-content class="row justify-content-center">
+  Your user is about to be logged out due to inactivity <br />
+  <div class="row justify-content-center" *ngIf="countdown; else: noCountdown">
+    <mat-error> {{ countdown }} </mat-error>
+  </div>
+  <ng-template #noCountdown><br /></ng-template>
+  <br />
+  <div class="row justify-content-center">
+    <button mat-flat-button class="mat-elevation-z1" color="accent">Return to Asset 360</button>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+.mat-tab-link-active,
+.mat-tab-label-active {
+  color: white;
+  font-weight: 600;
+  opacity: 1;
+}
+
+.main-view {
+  height: 100%;
+  margin-left: 5px;
+  margin-top: 3px;
+}
+
+.layout-transparent-panel {
+  background-color: #34383c;
+  border-radius: 5px;
+  border: 1px solid #575757;
+}
+
+.tab-heading {
+  height: 50px;
+}
+
+.tab-body {
+  height: calc(100% - 50px);
+  overflow: auto;
+  padding: 0px;
+}
+
+.main-view-content {
+  height: 100%;
+}

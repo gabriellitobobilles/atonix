@@ -1,0 +1,51 @@
+<div>
+  <mat-toolbar id="toolbar" color="primary">
+    <img class="logo" src="./assets/images/atonix-logo-rev.png" />
+    <span class="headline d-none d-sm-block">Asset 360 Login</span> <span class="right-justify"></span>
+  </mat-toolbar>
+
+  <mat-sidenav-container fullscreen>
+    <atx-login-form
+      *ngIf="(authState$ | async) === 'login'"
+      (submitted)="onLogin($event)"
+      (showForgotPassword)="onForgotPassword($event)"
+      (showCodeForm)="onShowCodeForm($event)"
+      [errorMessage]="error$ | async"
+      [message]="message$ | async"
+    >
+    </atx-login-form>
+    <atx-mfa-form
+      *ngIf="(authState$ | async) === 'mfa'"
+      (submitted)="onMfa($event)"
+      [errorMessage]="error$ | async"
+      [isSoftwareToken]="isSoftwareToken$ | async"
+    >
+    </atx-mfa-form>
+    <atx-forgot-password
+      *ngIf="(authState$ | async) === 'requestpw'"
+      [email]="email$ | async"
+      (submitted)="onRequestPassword($event)"
+      (cancelled)="onRequestPasswordCancelled()"
+      [errorMessage]="error$ | async"
+    >
+    </atx-forgot-password>
+    <atx-change-password
+      *ngIf="(authState$ | async) === 'changepw'"
+      [email]="email$ | async"
+      [errorMessage]="error$ | async"
+      (submitted)="onChangePassword($event)"
+      (cancelled)="onChangePasswordCancelled()"
+    >
+    </atx-change-password>
+    <atx-initial-password
+      *ngIf="(authState$ | async) === 'initialpw'"
+      [email]="email$ | async"
+      [name]="name$ | async"
+      [errorMessage]="error$ | async"
+      [message]="message$ | async"
+      (submitted)="onInitialPassword($event)"
+      (cancelled)="onInitialPasswordCancelled()"
+    ></atx-initial-password>
+    <div *ngIf="(authState$ | async) === 'working'">Working ...</div>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="3" tests="2" time="89.76">
+ <testsuite name="19588: Performance Analyst - Forecast  Charts" timestamp="2020-01-13T20:52:53" hostname="localhost" time="89.76" errors="0" tests="2" skipped="0" disabled="0" failures="3">
+  <testcase classname="19588: Performance Analyst - Forecast  Charts" name="Step 1: Confirm current weather values display properly" time="16.926">
+   <failure type="exception" message="Failed: Index out of bound. Trying to access element at index: -1, but there are only 0 elements that match locator By(css selector, [class=&quot;assetTreeNode ng-scope&quot;])"><![CDATA[NoSuchElementError: Index out of bound. Trying to access element at index: -1, but there are only 0 elements that match locator By(css selector, [class="assetTreeNode ng-scope"])
+    at selenium_webdriver_1.promise.all.then (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:274:27)
+    at ManagedPromise.invokeCallback_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:1376:14)
+    at TaskQueue.execute_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:3084:14)
+    at TaskQueue.executeNext_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:3067:27)
+    at asyncRun (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2927:27)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:668:7
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)Error
+    at ElementArrayFinder.applyAction_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:459:27)
+    at ElementArrayFinder.(anonymous function).args [as click] (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:91:29)
+    at ElementFinder.(anonymous function).args [as click] (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:831:22)
+    at Object.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec09_performanceAnalyst-Forecast-Charts.e2e-spec.ts:46:41)
+    at step (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at fulfilled (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:104:62)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)
+From: Task: Run it("Step 1: Confirm current weather values display properly") in control flow
+    at UserContext.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasminewd2\index.js:94:19)
+    at attempt (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4297:26)
+    at QueueRunner.run (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4217:20)
+    at runNext (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4257:20)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4264:13
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4172:9
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasminewd2\index.js:64:48
+    at ControlFlow.emit (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\events.js:62:21)
+    at ControlFlow.shutdown_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2674:10)
+    at shutdownTask_.MicroTask (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2599:53)
+From asynchronous test: 
+Error
+    at Suite.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec09_performanceAnalyst-Forecast-Charts.e2e-spec.ts:35:3)
+    at addSpecsToSuite (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:1107:25)
+    at Env.describe (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:1074:7)
+    at describe (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4399:18)
+    at Object.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec09_performanceAnalyst-Forecast-Charts.e2e-spec.ts:4:1)
+    at Module._compile (internal/modules/cjs/loader.js:723:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:734:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)]]>
+   </failure>
+  </testcase>
+  <testcase classname="19588: Performance Analyst - Forecast  Charts" name="Step 2: Adjust time to see 5 day forecast- verify correct displayed trends" time="21.95">
+   <failure type="toEqual" message="Expected 0 to equal 6."><![CDATA[Error: Failed expectation
+    at Object.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec09_performanceAnalyst-Forecast-Charts.e2e-spec.ts:82:75)
+    at step (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at fulfilled (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:104:62)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)]]>
+   </failure>
+   <failure type="exception" message="Failed: No element found using locator: By(css selector, [class=&quot;currentWeatherStyle&quot;])"><![CDATA[NoSuchElementError: No element found using locator: By(css selector, [class="currentWeatherStyle"])
+    at elementArrayFinder.getWebElements.then (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:814:27)
+    at ManagedPromise.invokeCallback_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:1376:14)
+    at TaskQueue.execute_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:3084:14)
+    at TaskQueue.executeNext_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:3067:27)
+    at asyncRun (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2927:27)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:668:7
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)Error
+    at ElementArrayFinder.applyAction_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:459:27)
+    at ElementArrayFinder.(anonymous function).args [as getText] (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:91:29)
+    at ElementFinder.(anonymous function).args [as getText] (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\protractor\built\element.js:831:22)
+    at Object.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec09_performanceAnalyst-Forecast-Charts.e2e-spec.ts:84:53)
+    at step (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at fulfilled (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:104:62)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)
+From: Task: Run it("Step 2: Adjust time to see 5 day forecast- verify correct displayed trends") in control flow
+    at UserContext.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasminewd2\index.js:94:19)
+    at attempt (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4297:26)
+    at QueueRunner.run (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4217:20)
+    at runNext (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4257:20)
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4264:13
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4172:9
+    at D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasminewd2\index.js:64:48
+    at ControlFlow.emit (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\events.js:62:21)
+    at ControlFlow.shutdown_ (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2674:10)
+    at shutdownTask_.MicroTask (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\selenium-webdriver\lib\promise.js:2599:53)
+From asynchronous test: 
+Error
+    at Suite.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec09_performanceAnalyst-Forecast-Charts.e2e-spec.ts:63:3)
+    at addSpecsToSuite (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:1107:25)
+    at Env.describe (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:1074:7)
+    at describe (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\jasmine\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4399:18)
+    at Object.<anonymous> (D:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\PerformanceAnalyst\spec09_performanceAnalyst-Forecast-Charts.e2e-spec.ts:4:1)
+    at Module._compile (internal/modules/cjs/loader.js:723:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:734:10)
+    at Module.load (internal/modules/cjs/loader.js:620:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)]]>
+   </failure>
+  </testcase>
+ </testsuite>
+</testsuites>

@@ -1,0 +1,44 @@
+<atx-double-panel atxTitle="Workflow Management">
+  <div atx-panel-left style="height:100%;"><atx-assettree></atx-assettree></div>
+  <div atx-panel-center style="height:100%;">
+    <div class="main-view layout-transparent-panel" style="height:100%;">
+      <mat-card class="workflow-card">
+        <ng-container *ngIf="errorMessage; else: noErrors">
+          <mat-error> {{ errorMessage }} </mat-error>
+        </ng-container>
+        <ng-template #noErrors>
+          <ng-container *ngIf="(loadingPermission$ | async); else: notLoading">
+            <mat-card class="workflow-progress-bar-card">
+              <mat-card-title>
+                <ng-container *ngIf="(loadingPermission$ | async)"> Loading... </ng-container>
+
+                <mat-progress-bar color="primary" class="workflow-progress-bar" mode="indeterminate"></mat-progress-bar>
+              </mat-card-title>
+            </mat-card>
+          </ng-container>
+          <ng-template #notLoading>
+            <ng-container *ngIf="hasPermission; else: unauthorized">
+              <ng-container *ngIf="selectedAssetGuid; else: noSelectedAsset"> <router-outlet></router-outlet> </ng-container>
+              <ng-template #noSelectedAsset>
+                <div
+                  style="position:absolute; top:20px;left:0;display:block;background-color:#1b1d1e;border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding:15px 20px"
+                >
+                  <img src="./assets/images/intro-arrow.png" style="width:30px;margin-right:10px;" />
+                  <span>Select an asset.</span>
+                </div>
+                <div style="text-align:center;">
+                  <img src="./assets/images/A360-watermark.png" style="width:400px" />
+                  <h3 class="mat-display-2">Welcome to Workflow Management</h3>
+                  <p>Select an asset from the Asset Navigator to get started.</p>
+                </div>
+              </ng-template>
+            </ng-container>
+            <ng-template #unauthorized>
+              <mat-error class="error"> User does not have permission to access Workflow Management </mat-error>
+            </ng-template>
+          </ng-template>
+        </ng-template>
+      </mat-card>
+    </div>
+  </div>
+</atx-double-panel>

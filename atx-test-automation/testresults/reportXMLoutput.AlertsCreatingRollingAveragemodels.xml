@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="3" tests="2" time="917.534">
+ <testsuite name="Alerts: Creating Rolling Average models" timestamp="2019-12-02T19:32:04" hostname="localhost" time="917.534" errors="0" tests="2" skipped="0" disabled="0" failures="3">
+  <testcase classname="Alerts: Creating Rolling Average models" name="Creating Rolling Average Model" time="863.038">
+   <failure type="toBe" message="Expected false to be true, &apos;Model Build was not successful&apos;."><![CDATA[Error: Failed expectation
+    at Object.<anonymous> (d:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\Alerts\spec02_Creating_Rolling_Average_Model.ts:154:51)
+    at step (d:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (d:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at fulfilled (d:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:104:62)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)]]>
+   </failure>
+  </testcase>
+  <testcase classname="Alerts: Creating Rolling Average models" name="Deleting Rolling Average model" time="22.327">
+   <failure type="toBe" message="Expected false to be true, &apos;Deleted models was not successfull&apos;."><![CDATA[Error: Failed expectation
+    at Object.<anonymous> (d:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\Alerts\spec02_Creating_Rolling_Average_Model.ts:170:81)
+    at step (d:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (d:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at fulfilled (d:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:104:62)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)]]>
+   </failure>
+   <failure type="toBe" message="Expected false to be true, &apos;Deleted models was not successfull&apos;."><![CDATA[Error: Failed expectation
+    at Object.<anonymous> (d:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\apps\e2e\src\specs\Alerts\spec02_Creating_Rolling_Average_Model.ts:176:8)
+    at step (d:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:133:27)
+    at Object.next (d:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:114:57)
+    at fulfilled (d:\AtonixAzureRepo\New_Repo_Atonix_Automation\atx-test-automation\node_modules\tslib\tslib.js:104:62)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)]]>
+   </failure>
+  </testcase>
+ </testsuite>
+</testsuites>

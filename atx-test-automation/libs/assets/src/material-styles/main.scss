@@ -1,0 +1,189 @@
+@import '~@angular/material/theming';
+@import '_variables';
+
+@import 'resets';
+@include mat-core(); // only include this once per app
+
+/*#region*/
+$atonix-dark-palette: (
+  50: #e7e7e8,
+  100: #c2c3c5,
+  200: #9a9c9e,
+  300: #717477,
+  400: #525659,
+  500: $atonix-foreground,
+  600: #2f3236,
+  700: #272b30,
+  800: #212427,
+  900: #15171a,
+  A100: #61b1ff,
+  A200: #2e98ff,
+  A400: #007dfa,
+  A700: #0070e0,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+$dark-primary: mat-palette($atonix-dark-palette, 500);
+$dark-accent: mat-palette($mat-blue, 400);
+$dark-warn: mat-palette($mat-deep-orange, 800);
+// A primary palette: colors most widely used across all screens and components.
+// An accent palette: colors used for the floating action button and interactive elements.
+// A warn palette: colors used to convey error state.
+// A foreground palette: colors for text and icons.
+// A background palette: colors used for element backgrounds.
+$mat-dark-theme-background: (
+  status-bar: $atonix-background-gradient,
+  app-bar: $atonix-foreground,
+  background: $atonix-background-color,
+  hover: rgba(white, 0.04),
+  card: $atonix-foreground,
+  dialog: map_get($atonix-dark-palette, 800),
+  disabled-button: rgba(white, 0.12),
+  raised-button: #3e4247,
+  focused-button: $light-focused,
+  selected-button: #3e4247,
+  selected-disabled-button: map_get($mat-grey, 800),
+  disabled-button-toggle: black,
+  unselected-chip: map_get($mat-grey, 700),
+  disabled-list-option: black
+);
+$mat-dark-theme-foreground: (
+  base: $light-text,
+  divider: $light-dividers,
+  dividers: $light-dividers,
+  disabled: $light-disabled-text,
+  disabled-button: rgba(white, 0.3),
+  disabled-text: $light-disabled-text,
+  hint-text: $light-disabled-text,
+  secondary-text: $light-secondary-text,
+  icon: white,
+  icons: white,
+  text: white,
+  slider-min: white,
+  slider-off: rgba(white, 0.3),
+  slider-off-active: rgba(white, 0.3)
+);
+@function atx-dark-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+  @return (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    is-dark: true,
+    foreground: $mat-dark-theme-foreground,
+    background: $mat-dark-theme-background
+  );
+}
+/* #endregion */
+.primary-color {
+  color: mat-color($dark-primary) !important;
+}
+.accent-color {
+  color: mat-color($dark-accent) !important;
+}
+.warn-color {
+  color: mat-color($dark-warn) !important;
+}
+$alternate-primary: mat-palette($mat-light-blue);
+$alternate-accent: $dark-primary;
+$alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
+/* #region */
+$custom-typography: mat-typography-config(
+  $font-family: 'Calibri, system-ui, Verdana, Arial, sans-serif'
+    /* $font-family: 'Roboto, system-ui, "Segoe UI", "Fira Sans", Arial, sans-serif', */,
+  $display-4: mat-typography-level(35px, 112px, 300),
+  $display-3: mat-typography-level(30px, 56px, 400),
+  $display-2: mat-typography-level(24px, 48px, 600),
+  $display-1: mat-typography-level(20px, 40px, 600),
+  $headline: mat-typography-level(20px, 32px, 600),
+  $title: mat-typography-level(21px, 40px, 500),
+  $subheading-2: mat-typography-level(18px, 28px, 400),
+  $subheading-1: mat-typography-level(16px, 24px, 400),
+  $body-2: mat-typography-level(16px, 24px, 500),
+  $body-1: mat-typography-level(14px, 20px, 400),
+  $caption: mat-typography-level(10px, 20px, 400),
+  $button: mat-typography-level(13px, 14px, 500),
+  $input: mat-typography-level(inherit, 1.125, 400) /* Line-height must be unit-less fraction of the font-size. */
+);
+@include mat-base-typography($custom-typography);
+@include angular-material-typography($custom-typography);
+/* #endregion */
+$light-theme-accent: mat-palette($mat-grey, 900);
+$light-theme-primary: mat-palette($mat-grey, 900);
+$dark-accent: mat-palette($mat-blue, 400);
+$dark-warn: mat-palette($mat-deep-orange, 800);
+$alternate-theme: mat-light-theme($light-theme-accent, $light-theme-accent);
+$dark-theme: (
+  atonix-background-gradient: linear-gradient(rgb(72, 78, 85), rgb(58, 63, 68) 60%, rgb(49, 53, 57)),
+  atonix-background-color: $atonix-background-color,
+  toolbar-button-background: rgba(200, 200, 200, 0.6),
+  atonix-foreground: #34383c,
+  border-highlights: rgb(87, 87, 87),
+  login-card: $white-card,
+  login-card-text: $white-card-text,
+  toolbar-color: linear-gradient(rgb(72, 78, 85), rgb(58, 63, 68) 60%, rgb(49, 53, 57)),
+  workflow-card: $workflow-dark-card,
+  workflow: (
+    disabled-text: $light-disabled-text,
+    small-card-text: $light-text,
+    small-card-background: $dark-card-background
+  )
+);
+$dark-material-theme: atx-dark-theme($dark-primary, $dark-accent, $dark-warn);
+@include angular-material-theme($dark-material-theme);
+
+
+.mat-focused {
+    .mat-form-field-label {
+      color: mat-color($dark-accent) !important;
+    }
+
+    .mat-form-field-ripple {
+      background-color: mat-color($dark-accent) !important;
+    }
+    .mat-input-element {
+      caret-color: white !important;
+    }
+  }
+
+@mixin mat-select-theme($theme) {
+  .mat-form-field {
+    &.mat-focused {
+      &.mat-primary .mat-select-arrow {
+        color: white !important;
+      }
+    }
+  }
+}
+@mixin mat-form-field-outline-theme($theme) {
+  $outline-color-primary: mat-palette($atonix-dark-palette, 300) !important;
+}
+.tab-body {
+  padding: 10px 20px;
+  height: calc(100% - 49px) !important;
+  overflow: auto;
+}
+.main-view-inner {
+  height: 100%;
+}
+.mat-raised-button {
+  color: $light-text !important;
+  font-weight: 600 !important;
+}
+// FIX: Material scrollbar issue. See: https://github.com/angular/material2/issues/13983
+mat-sidenav > .mat-drawer-inner-container {
+  overflow: hidden;
+}

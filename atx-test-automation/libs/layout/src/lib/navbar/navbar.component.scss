@@ -1,0 +1,76 @@
+@import '_variables';
+@mixin toolbar-theme($material-theme, $atx-theme) {
+  $toolbar-button-background: map-get($atx-theme, toolbar-button-background);
+  $atonix-background-gradient: map-get($atx-theme, atonix-background-gradient);
+  $toolbar-color: map-get($atx-theme, toolbar-color);
+
+  #toolbar.mat-toolbar-single-row {
+    height: 40px;
+    @include mat-elevation(5);
+    background-color: $toolbar-color;
+    background-image: $atonix-background-gradient;
+    border-bottom: 1px solid black;
+    position: relative;
+    z-index: 30;
+  }
+
+  .asset-tree-button {
+    margin-top: 5px;
+    height: 38px;
+    border-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-clip: padding-box;
+    appearance: none;
+    border-radius: 4px;
+    width: 38px;
+    background: $atonix-background-gradient;
+    position: relative;
+    overflow: hidden;
+  }
+  .asset-tree-button:hover {
+    background: rgba(black, 0.2);
+  }
+
+  .asset-tree-button:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 2px;
+    background: $toolbar-button-background;
+    opacity: 0;
+    border-radius: 1px;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0, 0);
+      opacity: 1;
+    }
+    20% {
+      transform: scale(25, 25);
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(40, 40);
+    }
+  }
+
+  mat-toolbar .toolbar-button.asset-tree-button {
+    margin: 10px 0 0 0;
+    padding: 4px;
+  }
+
+  .asset-tree-button:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+  }
+
+  .asset-tree-image {
+    margin-bottom: 12px;
+  }
+}

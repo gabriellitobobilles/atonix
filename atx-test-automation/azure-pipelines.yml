@@ -1,0 +1,62 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '8.x'
+  displayName: 'Install Node.js'
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    command: install
+
+# - task: Npm@1
+#   displayName: 'webdriver-manager update'
+#   inputs:
+#     command: custom
+#     customCommand: 'run testBash'
+
+- script: |
+    npm install webdriver-manager -g
+    npm install protractor -g
+    webdriver-manager update
+    webdriver-manager start --detach
+  displayName: 'Webdriver install and start'
+
+# - task: Npm@1
+#   displayName: 'webdriver-manager update'
+#   inputs:
+#     command: custom
+#     customCommand: 'run webdriver:update'
+
+- task: Npm@1
+  displayName: 'protractor:workManagement'
+  inputs:
+    command: custom
+    customCommand: 'run protractor:workManagement'
+
+- task: PublishTestResults@1
+  displayName: 'Publish Test Result'
+  inputs:
+    testRunner: VSTest
+    # testResultsFiles: '$(System.DefaultWorkingDirectory)/testresultTrx/*.trx'
+    testRunTitle: 'Protractor Tests'
+    testResultsFiles: 'testresultTrx/*.trx'
+  condition: succeededOrFailed()
+
+# - script: |
+#     # npm install
+#     # # npm run build
+#     # npm run webdriver
+#     # npm run protractor:workManagement
+#   displayName: 'npm install and build'

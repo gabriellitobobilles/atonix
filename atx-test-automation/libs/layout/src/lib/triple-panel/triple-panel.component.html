@@ -1,0 +1,52 @@
+<div class="atxLayout" [ngClass]="{ 'light-theme': useLightTheme$ | async }">
+  <atx-navbar
+    [atxTitle]="atxTitle"
+    [showAssetNavigatorButton]="true"
+    [showTimeSelectorButton]="true"
+    [loggedIn]="loggedIn$ | async"
+    [accountModelUser]="accountModelUser$ | async"
+    [authUser]="authUser$ | async"
+    [logoClass]="logoClass$ | async"
+    (logOut)="logout()"
+    (toggleAssetNavigator)="toggleAssetNavigator()"
+    (toggleTimeSelector)="toggleTimeSelector()"
+  >
+  </atx-navbar>
+  <mat-sidenav-container fullscreen [autosize]="true" [hasBackdrop]="false">
+    <mat-sidenav
+      [style.width.px]="assetNavigatorWidth$ | async"
+      mode="push"
+      autosize
+      mwlResizable
+      [resizeEdges]="{ right: true }"
+      (resizeEnd)="onResizeEnd($event)"
+      class="mat-elevation-z1 scrollcontainer"
+      [opened]="isAssetNavigatorOpened$ | async"
+    >
+      <ng-content select="[atx-panel-left]"></ng-content>
+    </mat-sidenav>
+    <div style="height: calc(100% - 4px);">
+      <div
+        [@expandContract]="{
+          value: (isAssetNavigatorOpened$ | async) ? 'contract' : 'expand',
+          params: { width: centerPanelWidthStyle }
+        }"
+        [style.width]="centerPanelWidthStyle"
+        [style.height]="centerPanelHeight"
+      >
+        <ng-content select="[atx-panel-center]"></ng-content>
+      </div>
+      <div
+        style="position:absolute;bottom:0;left:0;right:0;"
+        [@expandContract]="{
+          value: (isAssetNavigatorOpened$ | async) ? 'contract' : 'expand',
+          params: { width: centerPanelWidthStyle }
+        }"
+        [style.width]="centerPanelWidthStyle"
+        [style.height]="timeSliderHeight"
+      >
+        <ng-content *ngIf="(isTimeSelectorOpened$ | async)" select="[atx-panel-bottom]"></ng-content>
+      </div>
+    </div>
+  </mat-sidenav-container>
+</div>

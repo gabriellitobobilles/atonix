@@ -1,0 +1,15 @@
+<div [ngClass]="{ 'light-theme': useLightTheme$ | async }">
+  <atx-navbar
+    [atxTitle]="atxTitle"
+    [showAssetNavigatorButton]="false"
+    [showTimeSelectorButton]="false"
+    [loggedIn]="loggedIn$ | async"
+    [authUser]="authUser$ | async"
+    [logoClass]="logoClass$ | async"
+    (logOut)="logout()"
+    (toggleAssetNavigator)="toggleAssetNavigator()"
+    (toggleTimeSelector)="toggleTimeSelector()"
+  >
+  </atx-navbar>
+  <mat-sidenav-container fullscreen> <ng-content select="[atx-panel-center]"></ng-content> </mat-sidenav-container>
+</div>

@@ -1,0 +1,210 @@
+<div id="atx-action-{{index}}">
+  <ng-container *ngIf="formState !== WorkflowFormStateType.Viewing">
+    <span *ngIf="actionForm.value.categoryNotificationID === -1" class="mat-display-2">Add Workflow Action</span>
+    <span *ngIf="actionForm.value.categoryNotificationID !== -1" class="mat-display-2">Edit Workflow Action</span>
+  </ng-container>
+  <p *ngIf="isIssueActivityOpenStatus">Action triggers when workflow item is Opened</p>
+  <p *ngIf="isIssueActivityClosedStatus">Action triggers when workflow item is Closed</p>
+  <div>
+    <form [formGroup]="actionForm">
+      <ng-container *ngIf="formState === WorkflowFormStateType.Viewing; else: editingForm">
+        <div class="select-settings">
+          <label>Action Type:</label> {{ actionForm.get('selectedActionType').value | actionTypeString }}
+        </div>
+        <div class="select-settings action-inputs"><label>Action Name:</label> {{ actionForm.get('actionName').value }}</div>
+      </ng-container>
+      <ng-template #editingForm>
+        <div class="select-settings">
+          <label>Select Action Type:</label>
+          <select formControlName="selectedActionType">
+            <option *ngFor="let actionType of ActionTypes" [value]="actionType.ActionTypeID">
+              {{ actionType.ActionTypeDesc }}
+            </option>
+          </select>
+        </div>
+        <div class="select-settings action-inputs">
+          <label>Action Name:</label> <input id="actionName" type="text" placeholder="Action Name" formControlName="actionName" />
+          <mat-error class="invalid" *ngIf="errorMessages['actionName']"> {{ errorMessages['actionName'] }} </mat-error>
+        </div>
+      </ng-template>
+      <ng-container *ngIf="(selectedActionType | asNumber) === 1">
+        <atx-action-form-email-details
+          [workflowForm]="actionForm.controls['emailDetails']"
+          [errors]="errorMessages['emailDetails']"
+          [showValidationMessages]="showValidationMessages"
+          [formState]="formState"
+        ></atx-action-form-email-details>
+      </ng-container>
+      <ng-container *ngIf="(selectedActionType | asNumber) === 2">
+        <atx-action-form-update-map-details
+          [workflowForm]="actionForm.controls['mapStatusDetails']"
+          [errors]="errorMessages"
+          [formState]="formState"
+          [showValidationMessages]="showValidationMessages"
+          [mapsForAsset]="mapsForAsset"
+          [layerForMap]="layerForMap"
+          (changeSelectedMap)="onChangeSelectedMap($event)"
+        ></atx-action-form-update-map-details>
+      </ng-container>
+      <ng-container *ngIf="(selectedActionType | asNumber) === 3">
+        <atx-action-form-update-attribute-details
+          [workflowForm]="actionForm.controls['updateAttributeDetails']"
+          [errors]="errorMessages['updateAttributeDetails']"
+          [showValidationMessages]="showValidationMessages"
+          [formState]="formState"
+        ></atx-action-form-update-attribute-details>
+      </ng-container>
+      <ng-container *ngIf="(selectedActionType | asNumber) === 4">
+        <atx-action-form-modify-asset-tags
+          [workflowForm]="actionForm.controls['dynamicGroup']"
+          [errors]="errorMessages"
+        ></atx-action-form-modify-asset-tags>
+      </ng-container>
+      <ng-container *ngIf="(selectedActionType | asNumber) === 5">
+        <atx-action-form-create-blog-entry
+          [workflowForm]="actionForm.controls['dynamicGroup']"
+          [errors]="errorMessages"
+        ></atx-action-form-create-blog-entry>
+      </ng-container>
+      <ng-container *ngIf="(selectedActionType | asNumber) === 6">
+        <atx-action-form-assign-user-action
+          [workflowForm]="actionForm.controls['dynamicGroup']"
+          [errors]="errorMessages"
+        ></atx-action-form-assign-user-action>
+      </ng-container>
+      <ng-container *ngIf="(selectedActionType | asNumber) === 7">
+        <atx-action-form-create-issue
+          [workflowForm]="actionForm.controls['dynamicGroup']"
+          [errors]="errorMessages"
+        ></atx-action-form-create-issue>
+      </ng-container>
+      <ng-container *ngIf="(selectedActionType | asNumber) === 8">
+        <atx-action-form-update-activity-status
+          [workflowForm]="actionForm.controls['dynamicGroup']"
+          [errors]="errorMessages"
+        ></atx-action-form-update-activity-status>
+      </ng-container>
+      <ng-container *ngIf="(selectedActionType | asNumber) === 9">
+        <atx-action-form-update-issue-status
+          [workflowForm]="actionForm.controls['dynamicGroup']"
+          [errors]="errorMessages"
+        ></atx-action-form-update-issue-status>
+      </ng-container>
+      <mat-expansion-panel *ngIf="showAdvancedSettings" [expanded]="false">
+        <mat-expansion-panel-header>Advanced Action Settings</mat-expansion-panel-header>
+        <span><label id="executeAction">Execute Action When:</label></span>
+        <mat-radio-group formControlName="triggerOnEnter">
+          <mat-radio-button [ngClass]="{ 'disable-checkbox': formState === WorkflowFormStateType.Viewing }" [value]="true"
+            >Entering Status&nbsp;&nbsp;</mat-radio-button
+          >
+          <mat-radio-button [ngClass]="{ 'disable-checkbox': formState === WorkflowFormStateType.Viewing }" [value]="false"
+            >Leaving Status</mat-radio-button
+          >
+        </mat-radio-group>
+        <br />
+
+        <!-- Transition Diagram -->
+        <div style="display: inline-block; margin-top: 10px">
+          <!-- Trigger On Leaving Status -->
+          <ng-container *ngIf="!this.actionForm.controls['triggerOnEnter'].value">
+            <div style="display: inline-block; vertical-align: top; margin-bottom: 10px">
+              <div style="display: table; width: 100%">
+                <div class="transition-resolution-status-this">
+                  <label style="margin-top: 5px">{{
+                    resolutionStatusNames.getRawValue()[myStatusIndex].resolutionStatusName
+                  }}</label>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: inline-block; vertical-align: top; margin-bottom: 10px">
+              <div style="display: table; width: 100%">
+                <div style="text-align: center; vertical-align: middle; display: table-cell">
+                  <label style="margin-top: 8px; margin-right: 10px; margin-left: 10px">
+                    <fa-icon [icon]="faIcons.faArrowCircleRight" class="fa-2x"></fa-icon>
+                  </label>
+                </div>
+                <div class="transition-action">
+                  <label style="margin-top: 5px">{{ this.actionForm.controls['actionName'].value }}</label>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Other Status -->
+          <div style="display: inline-block; vertical-align: top; margin-bottom: 10px">
+            <div style="display: table; width: 100%; height: 86px">
+              <!-- Only precede with arrow when trigger on leaving status -->
+              <ng-container *ngIf="!this.actionForm.controls['triggerOnEnter'].value">
+                <div style="display: table; width: 100%; height: 86px;">
+                  <div style="text-align: center; vertical-align: middle; display: table-cell">
+                    <label style="margin-top: 8px; margin-right: 10px; margin-left: 10px">
+                      <fa-icon [icon]="faIcons.faArrowCircleRight" class="fa-2x"></fa-icon>
+                    </label>
+                  </div>
+                </div>
+              </ng-container>
+
+              <div class="transition-resolution-status-other">
+                <mat-list id="work-flow-status-other">
+                  <ng-container
+                    *ngFor="
+                      let otherStatus of (actionForm.controls['triggerOnResolutionStatus'] | asFormArray).controls;
+                      let i = index
+                    "
+                  >
+                    <mat-list-item
+                      *ngIf="
+                        i !== myStatusIndex &&
+                        ((!actionForm.controls['triggerOnEnter'].value && resolutionTransitionsAllowedFromMe[i]) ||
+                          (actionForm.controls['triggerOnEnter'].value && resolutionTransitionsAllowedToMe[i]))
+                      "
+                      class="mat-list-item-word-wrap"
+                    >
+                      <mat-checkbox
+                        [ngClass]="{ 'disable-checkbox': formState === WorkflowFormStateType.Viewing }"
+                        [formControl]="otherStatus"
+                        >{{ resolutionStatusNames.getRawValue()[i].resolutionStatusName }}</mat-checkbox
+                      >
+                    </mat-list-item>
+                  </ng-container>
+                </mat-list>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trigger On Entering Status -->
+          <ng-container *ngIf="this.actionForm.controls['triggerOnEnter'].value">
+            <div style="display: inline-block; vertical-align: top; margin-bottom: 10px">
+              <div style="display: table; width: 100%">
+                <div style="text-align: center; vertical-align: middle; display: table-cell">
+                  <label style="margin-top: 8px; margin-right: 10px; margin-left: 10px">
+                    <fa-icon [icon]="faIcons.faArrowCircleRight" class="fa-2x"></fa-icon>
+                  </label>
+                </div>
+                <div class="transition-action">
+                  <label style="margin-top: 5px">{{ this.actionForm.controls['actionName'].value }}</label>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: inline-block; vertical-align: top; margin-bottom: 10px">
+              <div style="display: table; width: 100%">
+                <div style="text-align: center; vertical-align: middle; display: table-cell">
+                  <label style="margin-top: 8px; margin-right: 10px; margin-left: 10px">
+                    <fa-icon [icon]="faIcons.faArrowCircleRight" class="fa-2x"></fa-icon>
+                  </label>
+                </div>
+                <div class="transition-resolution-status-this">
+                  <label style="margin-top: 5px">{{
+                    resolutionStatusNames.getRawValue()[myStatusIndex].resolutionStatusName
+                  }}</label>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </mat-expansion-panel>
+    </form>
+  </div>
+</div>

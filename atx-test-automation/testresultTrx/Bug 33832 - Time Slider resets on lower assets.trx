@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<TestRun xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010" id="a385e1ce-1b2e-48bb-8ddd-7cb6749aac5b" name="Protractor Test Results" runUser="Gabriel Bobilles">
+  <Times creation="2020-01-13 20:57:45" queuing="2020-01-13 20:57:45" start="2020-01-13 20:58:28" finish="2020-01-13 20:58:50"/>
+  <TestSettings name="Default Test Settings" id="ce1a4cfb-64fa-4d63-8815-e9984737a62c">
+    <Deployment runDeploymentRoot="Bug 33832 - Time Slider resets on lower assets"/>
+  </TestSettings>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0"/>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest id="fb61feb5-3f03-4338-af6a-c5c4a1e6b00f" name="Bug 33832 - Time Slider resets on lower assets - Bug 33832 - Time Slider resets on lower assets - ">
+      <Description>Bug 33832 - Time Slider resets on lower assets - </Description>
+      <Execution id="2b80374f-110f-43ad-be7f-c9ce9a7e09cb"/>
+      <TestMethod codeBase="protractor-jasmine" className="Bug 33832 - Time Slider resets on lower assets" name="Bug 33832 - Time Slider resets on lower assets"/>
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList id="8c84fa94-04c1-424b-9868-57a2d4851a1d" name="Results Not in a List"/>
+    <TestList id="19431567-8539-422a-85d7-44ee4e166bda" name="All Loaded Results"/>
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="fb61feb5-3f03-4338-af6a-c5c4a1e6b00f" executionId="2b80374f-110f-43ad-be7f-c9ce9a7e09cb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"/>
+  </TestEntries>
+  <Results>
+    <UnitTestResult testId="fb61feb5-3f03-4338-af6a-c5c4a1e6b00f" testName="Bug 33832 - Time Slider resets on lower assets - Bug 33832 - Time Slider resets on lower assets - " testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" computerName="Lenovo_ThinkPad_0120" outcome="Passed" startTime="2020-01-13 20:58:28" endTime="2020-01-13 20:58:50" duration="00:00:21.691" executionId="2b80374f-110f-43ad-be7f-c9ce9a7e09cb" relativeResultsDirectory="2b80374f-110f-43ad-be7f-c9ce9a7e09cb"/>
+  </Results>
+</TestRun>

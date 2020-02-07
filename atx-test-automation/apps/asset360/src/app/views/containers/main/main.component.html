@@ -1,0 +1,30 @@
+<atx-triple-panel atxTitle="{{ (selectedAppContext$ | async)?.DisplayName }}">
+  <div atx-panel-left><atx-assettree (assetButtonClicked)="buttonClicked($event)"></atx-assettree></div>
+  <div atx-panel-center style="height:100%;">
+    <div style="height:100%;">
+      <div class="main-view layout-transparent-panel">
+        <div *ngIf="!(tabViewPending$ | async); else: tabViewPending" class="main-view-content">
+          <nav id="atx-nav-links" mat-tab-nav-bar class="tab-heading">
+            <a
+              mat-tab-link
+              *ngFor="let link of (assetViews$ | async); let i = index"
+              [routerLink]="link.Path"
+              queryParamsHandling="preserve"
+              routerLinkActive="mat-tab-link-active"
+              [active]="selectedView === i"
+              #rla="routerLinkActive"
+              (click)="setActiveLink(i)"
+            >
+              {{ link.ViewName }}
+            </a>
+          </nav>
+          <div class="tab-body"><router-outlet></router-outlet></div>
+        </div>
+        <ng-template #tabViewPending>
+          <mat-progress-bar id="asset360-progress-bar" color="accent" mode="indeterminate"></mat-progress-bar>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div atx-panel-bottom style="height:100%;"><atx-time-range-selector></atx-time-range-selector></div>
+</atx-triple-panel>

@@ -1,0 +1,12 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  -ms-overflow-style: none;
+  overflow: auto;
+}
+
+* {
+  &:active,
+  :focus {
+    outline: none !important;
+  }
+}

@@ -1,0 +1,32 @@
+// Colors
+$atonix-foreground: #34383c;
+$atonix-background-color: #2c2e32;
+$atonix-gradient-start: rgba(72, 78, 85, 0.7);
+$atonix-background-gradient: linear-gradient(rgb(72, 78, 85), rgb(58, 63, 68) 60%, rgb(49, 53, 57));
+$atonix-sidenav-highlight: rgb(87, 87, 87);
+$atonix-sidenav-div-highlight: rgba(87, 87, 87, 0.4);
+
+$atonix-light-color: #6ed34b;
+$atonix-dark-color: #36a115; // calculated from https://material.io/tools/color
+
+$accent: #007dfa;
+$light-text: #e7e7e7;
+$dark-card-background: #252526;
+$white-card: #fefefe;
+$white-card-text: #010101;
+
+$workflow-dark-card: #1e1e1e;
+
+$warning: #b71c1c;
+$bottom-margin: 44px;
+$workflow-bottom-margin: 4px;
+
+@mixin md-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+  line-height: $size;
+}
+
+// overriding bootstraps gutter width
+$grid-gutter-width: 10px !default;

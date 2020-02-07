@@ -1,0 +1,33 @@
+@import '_variables';
+
+@mixin main-theme($material-theme, $atx-theme) {
+  $foreground: map-get($atx-theme, atonix-foreground);
+  $workflow-card: map-get($atx-theme, workflow-card);
+  $border-highlights: map-get($atx-theme, border-highlights);
+
+  .push-right {
+    transition: all 0.2s ease-in;
+  }
+
+  .workflow-card {
+    color: $light-text;
+    background: $foreground;
+    border-color: $border-highlights;
+  }
+}
+.main-view {
+  padding-left: 5px;
+}
+
+.workflow-card {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 10px 10px;
+  align-content: center;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  z-index: 1;
+  overflow: auto;
+}

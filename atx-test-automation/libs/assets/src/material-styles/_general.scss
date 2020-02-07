@@ -1,0 +1,197 @@
+@mixin general-theme($material-theme, $atx-theme) {
+  $login-card: map-get($atx-theme, login-card);
+  $login-card-text: mat-get($atx-theme, login-card-text);
+  $workflow: map-get($atx-theme, workflow);
+  $card-bg: map-get($workflow, small-card-background);
+
+  mat-dialog-container.mat-dialog-container {
+    background-color: white;
+    color: black;
+  }
+
+  .white-card {
+    color: $login-card-text !important;
+    background-color: $login-card !important;
+  }
+
+  #login-form {
+    .mat-form-field-underline {
+      background-color: $accent;
+    }
+    .mat-form-field-ripple {
+      background-color: $accent;
+    }
+    .placeholder {
+      color: black;
+    }
+    .mat-checkbox-layout .mat-checkbox-label {
+      color: black;
+    }
+  }
+
+  #atx-nav-links.mat-tab-nav-bar .mat-ink-bar {
+    border-bottom: 1px solid $accent;
+  }
+
+  .toolbar-icons.toolbar-button {
+    @include mat-elevation(0);
+    padding: 0;
+    margin: 0 0 0 8px;
+    min-width: 38px;
+  }
+
+  #asset360-progress-bar {
+    .mat-progress-bar-buffer {
+      background: #34383c;
+    }
+    .mat-progress-bar-element,
+    .mat-progress-bar-fill::after {
+      height: 1px;
+    }
+    .mat-progress-bar-fill::after {
+      background-color: rgb(94, 171, 222);
+    }
+  }
+  // Used to set mat-mini-fab button sizes with icons. An example of the button is shown below:
+  // <button type="button" mat-icon-button mat-mini-fab color="primary" class="small settings-button" (click)="openSettingsClicked()">
+  // <mat-icon>settings</mat-icon>
+  // </button>
+  $icon-small-container-size: 25px;
+  $icon-small-size: 16px;
+  .mat-mini-fab.small {
+    width: $icon-small-container-size;
+    height: $icon-small-container-size;
+    line-height: $icon-small-container-size;
+
+    .mat-icon,
+    .mat-mini-fab i {
+      line-height: $icon-small-size;
+    }
+
+    .mat-button-wrapper {
+      padding: 0;
+      line-height: $icon-small-size;
+    }
+    .mat-icon {
+      width: $icon-small-size;
+      height: $icon-small-size;
+      font-size: $icon-small-size;
+    }
+  }
+
+  .right-justify {
+    flex: 1 1 auto;
+  }
+
+  mat-toolbar {
+    .toolbar-button {
+      line-height: 36px;
+      margin: 7px 0px 8px 0px;
+      border: 1px solid map_get($atonix-dark-palette, 800);
+      border-radius: 4px;
+    }
+  }
+  mat-toolbar .headline {
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    font-size: 25px;
+    text-transform: uppercase;
+  }
+
+  .select-settings {
+    padding-top: 5px;
+    .white-select {
+      display: inline-block;
+      border-radius: 3px;
+      background-color: white;
+      width: 200px;
+      padding-left: 5px;
+    }
+    .narrow-select {
+      display: inline-block;
+      border-radius: 3px;
+      background-color: white;
+      width: 100%;
+      padding-left: 5px;
+    }
+
+    input {
+      border-radius: 3px;
+      border: none;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 5px;
+      width: 200px;
+      border-bottom: 1px solid #757575;
+    }
+    label {
+      display: inline-block;
+      width: 140px;
+      text-align: right;
+    }
+    label:after {
+      padding-right: 5px;
+      content: ' ';
+    }
+    .mat-select-value-text {
+      color: black;
+    }
+    select {
+      border-radius: 3px;
+      border: none;
+      padding: 5px;
+      width: 200px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      border-bottom: 1px solid #757575;
+    }
+    textarea {
+      width: 195px;
+    }
+  }
+
+  .toast-success {
+    background-color: #116336;
+  }
+
+  .cdk-overlay-pane.apps-panel {
+    background-color: #484e55;
+    border-radius: 3px;
+    color: white;
+  }
+
+  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+    &.dark-backdrop {
+      background-color: rgb(39, 43, 48);
+      opacity: 0.5;
+    }
+  }
+
+  .info-message {
+    padding: 4px;
+    border-radius: 3px;
+    color: $light-text;
+    font-weight: 600;
+  }
+  .info-card {
+    padding: 4px !important;
+    height: 100px;
+    width: calc(100% - 4px);
+    background-color: $card-bg !important;
+  }
+}
+
+#work-flow-status-other {
+  .mat-list-item.mat-list-item-word-wrap {
+    height: initial !important;
+    .mat-line {
+      word-wrap: break-word !important;
+      white-space: pre-wrap !important;
+    }
+  }
+  .mat-checkbox-layout {
+    white-space: normal !important;
+  }
+}

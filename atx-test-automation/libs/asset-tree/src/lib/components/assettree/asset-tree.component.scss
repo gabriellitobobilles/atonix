@@ -1,0 +1,128 @@
+#assetTree {
+  padding:0 8px;
+}
+.assetTreeNode {
+  // padding-left: 14px;
+  margin-left: 3px;
+  margin-right: 0;
+  border-left: 1px solid rgba(165, 165, 165, 0.1);
+  white-space: nowrap;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.35;
+  width: 100%;
+}
+
+.assetTreeNode.top-level {
+  border-left:none;
+}
+
+.nodeItem {
+  cursor: pointer;
+}
+
+.nodeItem:hover {
+  opacity: 0.5;
+}
+
+atx-assettree > .assetTreeNode {
+  // padding-left: 2px;
+  border-left: none;
+  margin-left: -14px !important;
+}
+.assetTreeNode .fa-caret-right {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  color: #ccc;
+}
+
+.assetTreeNode fa-icon {
+  min-width: 14px;
+  display: inline-block;
+}
+
+.assetTreeNode a {
+  color: #efefef;
+}
+
+.assetDropdownNodeActive {
+  color: black;
+}
+
+.assetDropdownNodeInactive {
+  color: darkgray;
+}
+
+div.assetTreeButtons {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  opacity: 0.15;
+}
+
+div.assetTreeButtons:hover {
+  opacity: 1;
+}
+
+.assetTreeButton {
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.assetTreeNode > div:hover > div.assetTreeButtons,
+.TreeName:hover > div.assetTreeButtons {
+  display: block;
+  background-color: rgba(52, 56, 60, 0.9);
+  opacity: 1;
+}
+
+.assetTreeNode > div.selectedAsset:hover > div.assetTreeButtons {
+  background-color: rgba(75, 78, 81, 0.9);
+}
+
+.selectedAsset {
+  /*color:#fff;
+    font-weight:bold;*/
+  background-color: rgba(165, 165, 165, 0.2);
+  // padding: 1px;
+  margin: 0;
+  // padding-left: 1px;
+  border-radius: 5px;
+}
+
+.hiddenButton {
+  opacity: 0;
+}
+
+.info-button {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../../../../../assets/shared-assets/icons/info-solid.svg');
+}
+.down-button {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../../../../../assets/shared-assets/icons/arrow-down-solid.svg');
+}
+.up-button {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../../../../../assets/shared-assets/icons/arrow-up-solid.svg');
+}
+
+.transparent-panel-heading {
+  white-space: nowrap;
+  font-size: 0.8em;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+}

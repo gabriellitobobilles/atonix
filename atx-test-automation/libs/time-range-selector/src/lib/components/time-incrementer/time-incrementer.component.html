@@ -1,0 +1,18 @@
+<div class="trDialogPopupButton">
+  <div class="trButton" style="border-radius:30px 0 0 30px" (click)="InternalStepLeft()">
+    <fa-icon [icon]="faCaretLeft"></fa-icon>
+  </div>
+  <div
+    id="calendarPopupButton"
+    class="trButton trButtonCalendar"
+    style="border-radius:0"
+    (click)="InternalShowPopup()"
+    title="Adjust Time Range"
+  >
+    <img *ngIf="ShowSelection" src="./assets/icons/TimeRange.png" style="margin-top:-3px" />
+    <fa-icon *ngIf="!ShowSelection" [icon]="faCalendar"></fa-icon>
+  </div>
+  <div class="trButton" style="border-radius:0 30px 30px 0" (click)="InternalStepRight()">
+    <fa-icon [icon]="faCaretRight"></fa-icon>
+  </div>
+</div>

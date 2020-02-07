@@ -1,0 +1,6 @@
+@import '_variables';
+
+@mixin asset360-theme($material-theme, $atx-theme) {
+  $foreground: map-get($atx-theme, atonix-foreground);
+  $border-highlights: map-get($atx-theme, border-highlights);
+}

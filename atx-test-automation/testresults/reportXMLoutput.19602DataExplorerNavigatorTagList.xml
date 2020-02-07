@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="8" time="196.046">
+ <testsuite name="19602: Data Explorer - Navigator - Tag List" timestamp="2020-01-13T20:58:56" hostname="localhost" time="196.046" errors="0" tests="8" skipped="0" disabled="0" failures="0">
+  <testcase classname="19602: Data Explorer - Navigator - Tag List" name="step 1: Expand Nodes until scroll bar displays" time="25.276" />
+  <testcase classname="19602: Data Explorer - Navigator - Tag List" name="step 2: Select Asset - Verify timing is normal" time="9.11" />
+  <testcase classname="19602: Data Explorer - Navigator - Tag List" name="step 3: Search Assets" time="6.462" />
+  <testcase classname="19602: Data Explorer - Navigator - Tag List" name="step 4: Drag tags to chart" time="27.082" />
+  <testcase classname="19602: Data Explorer - Navigator - Tag List" name="step 5: Change Asset filter" time="18.467" />
+  <testcase classname="19602: Data Explorer - Navigator - Tag List" name="step 6: Filter by each column" time="35.81" />
+  <testcase classname="19602: Data Explorer - Navigator - Tag List" name="step 7: Drag single tags to chart" time="9.671" />
+  <testcase classname="19602: Data Explorer - Navigator - Tag List" name="step 8: Drag multiple tags onto chart at once (multiselect)" time="17.905" />
+ </testsuite>
+</testsuites>

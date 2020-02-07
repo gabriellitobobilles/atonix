@@ -1,0 +1,21 @@
+.drawer-content {
+  min-height: 200px;
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.settings-button {
+  top: 0;
+  margin-left: 10px;
+}
+.drawer-content.mat-card {
+  box-shadow: none;
+  border: 1px solid #222;
+  padding: 10px;
+  background: #2c2e32;
+}
+
+mat-expansion-panel {
+  margin: 10px;
+}

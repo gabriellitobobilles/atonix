@@ -1,0 +1,36 @@
+.overlay-content {
+  padding: 5px;
+  width: 440px;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.currentAC {
+  margin: 10px;
+  padding-bottom: 15px;
+}
+
+.appContextBlock {
+  display: block;
+  width: 98px;
+  height: 107px;
+  overflow: hidden;
+  text-align: center;
+  word-wrap: normal;
+  cursor: pointer;
+  font-size: 0.8em;
+  border: 1px solid rgba(0, 0, 0, 0);
+  margin: 5px 0;
+  float: left;
+}
+
+.appContextBlock img {
+  width: 60px;
+  height: auto;
+  margin: 5px auto;
+}
+
+.appContextBlock:hover {
+  border: 1px solid gray;
+  border-radius: 5px;
+}

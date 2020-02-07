@@ -1,0 +1,7 @@
+<button class="isLiveBtn" type="button" (click)="LiveToggle()">
+  <div class="toggle">
+    <img src="./assets/icons/Live-on.png" *ngIf="(IsLive$ | async); else: toggleLiveFalse" />
+    <ng-template #toggleLiveFalse> <img src="./assets/icons/Live-off.png" /> </ng-template>
+  </div>
+  LIVE
+</button>

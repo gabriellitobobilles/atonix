@@ -1,0 +1,59 @@
+<mat-card class="drawer-content">
+  <mat-card-content>
+    <button
+      *ngIf="formEditState !== FormEditStateType.Viewing"
+      mat-raised-button
+      color="accent"
+      title="Add Action"
+      (click)="buttonAddAction()"
+    >
+      Add Action
+    </button>
+    <span id="atx-test-actions">
+      <ng-container *ngFor="let action of actions.controls; let i = index">
+        <mat-expansion-panel
+          [expanded]="expandAllAccordions"
+          [class.action-first]="i === 0"
+          [class.action-last]="i === actions.length - 1"
+        >
+          <mat-expansion-panel-header>
+            {{ action.get('actionName').value }} - {{ action.get('selectedActionType').value | actionTypeString }}
+            <ng-container *ngIf="formEditState !== FormEditStateType.Viewing">
+              <button
+                type="button"
+                mat-icon-button
+                mat-mini-fab
+                color="warn"
+                class="small settings-button"
+                title="Delete Action"
+                (click)="buttonDeleteAction(i); $event.stopPropagation()"
+              >
+                <fa-icon [icon]="faIcons.faTrash"></fa-icon>
+              </button>
+            </ng-container>
+          </mat-expansion-panel-header>
+          <atx-action-form
+            [actionForm]="action"
+            [formState]="formEditState"
+            [index]="i"
+            [errorMessages]="validationMessages['controls'][i]"
+            [showValidationMessages]="showValidationMessages"
+            [myStatusIndex]="myResolutionStatusIndex"
+            [resolutionStatusNames]="resolutionStatusNames"
+            [showAdvancedSettings]="!areIssueStatuses"
+            [isIssueActivityOpenStatus]="areIssueStatuses && i === 0"
+            [isIssueActivityClosedStatus]="areIssueStatuses && i === 1"
+            [resolutionTransitionsAllowedFromMe]="resolutionTransitionsAllowedFromMe"
+            [resolutionTransitionsAllowedToMe]="resolutionTransitionsAllowedToMe"
+            [mapsForAsset]="mapsForAsset"
+            [layerForMap]="layerForMap"
+            (changeSelectedMap)="onChangeSelectedMap($event)"
+            (changeActionType)="changeActionType($event, i)"
+          >
+            [mapsForAsset]="mapsForAsset" [layerForMap]="layerForMap" >
+          </atx-action-form>
+        </mat-expansion-panel>
+      </ng-container>
+    </span>
+  </mat-card-content>
+</mat-card>

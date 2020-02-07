@@ -1,0 +1,144 @@
+<ng-container *ngIf="waitingOnCategoryResponse">
+  <mat-progress-bar id="asset360-progress-bar" color="accent" mode="indeterminate"> </mat-progress-bar>
+</ng-container>
+<ng-container>
+  <div class="row no-gutters">
+    <div class="col-md-12">
+      <mat-card class="work-management">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-sm-6">
+              <span class="mat-h1" *ngIf="formState === WorkflowFormStateType.Viewing">Select Category</span>
+              <span class="mat-h1" *ngIf="formState === WorkflowFormStateType.Editing">Edit Category</span>
+              <span class="mat-h1" *ngIf="formState === WorkflowFormStateType.Adding">Add New Category</span>
+            </div>
+            <div class="col-sm-6">
+              <button
+                mat-raised-button
+                [color]="'action-button'"
+                (click)="addCategory()"
+                title="Add"
+                [hidden]="issueClasses === null || formState !== WorkflowFormStateType.Viewing"
+                class="mat-elevation-z8 category-buttons"
+              >
+                <fa-icon [icon]="faIcons.faPlus"></fa-icon>
+                Add New Category
+              </button>
+              <button
+                mat-raised-button
+                color="accent"
+                title="Edit"
+                (click)="editCategory()"
+                [disabled]="selectedCategoryTypeID === null || selectedCategoryTypeID === -1"
+                [hidden]="formState !== WorkflowFormStateType.Viewing"
+                class="mat-elevation-z8 category-buttons"
+              >
+                <fa-icon [icon]="faIcons.faPencilAlt"></fa-icon>
+                Edit
+              </button>
+              <button
+                type="button"
+                mat-raised-button
+                color="warn"
+                class="small"
+                title="Delete"
+                (click)="buttonDelete()"
+                [disabled]="selectedCategoryTypeID === null || selectedCategoryTypeID === -1"
+                [hidden]="formState !== WorkflowFormStateType.Viewing"
+                class="mat-elevation-z8"
+              >
+                <fa-icon [icon]="faIcons.faTrash"></fa-icon>
+                Delete
+              </button>
+              <button
+                type="button"
+                mat-raised-button
+                color="accent"
+                class="small"
+                (click)="buttonSave()"
+                title="Save"
+                [disabled]="editingWhichName !== null || waitingOnCategoryResponse"
+                [hidden]="formState === WorkflowFormStateType.Viewing"
+                class="mat-elevation-z8"
+              >
+                <fa-icon [icon]="faIcons.faSave"></fa-icon>
+                Save
+              </button>
+              <button
+                type="button"
+                mat-raised-button
+                color="warn"
+                class="small"
+                (click)="buttonDiscard()"
+                title="Discard"
+                [disabled]="waitingOnCategoryResponse"
+                [hidden]="formState === WorkflowFormStateType.Viewing"
+                class="mat-elevation-z8 category-buttons"
+              >
+                <fa-icon [icon]="faIcons.faTimes"></fa-icon>
+                Cancel
+              </button>
+            </div>
+          </div>
+          <ng-container *ngIf="issueClasses === null; else: elseIssueClassesNotNull">
+            <div class="select-settings"><label>Client Name: </label> loading...</div>
+            <div class="select-settings"><label>Filter by Class: </label> loading...</div>
+            <div class="select-settings"><label>Open Category: </label> loading...</div>
+          </ng-container>
+          <ng-template #elseIssueClassesNotNull>
+            <ng-container *ngIf="formState === WorkflowFormStateType.Viewing; else: workflowFormCreation">
+              <ng-container *ngIf="selectedIssueClass; else: elseNoSelectedIssueClass">
+                <div class="select-settings">
+                  <label>Client Name: </label> <span class="mat-body-2"> {{ selectedIssueClass.ClientName }} </span>
+                </div>
+                <div class="select-settings">
+                  <label>Filter by Class: </label>
+                  <select
+                    (change)="onSelectIssueClass($event.target.value)"
+                    [value]="selectedIssueClass.IssueClassTypeID"
+                    [disabled]="formState === WorkflowFormStateType.Editing"
+                  >
+                    <option *ngFor="let issueClass of issueClasses" [value]="issueClass.IssueClassTypeID">{{
+                      issueClass.IssueClassDesc
+                    }}</option>
+                  </select>
+                </div>
+                <div class="select-settings" *ngIf="formState === WorkflowFormStateType.Viewing">
+                  <label>Open Category: </label>
+                  <ng-container
+                    *ngIf="selectedCategoryTypeID !== null && selectedCategoryTypeID !== -1; else: elseNoCategoriesTemplate"
+                  >
+                    <select (change)="onSelectCategory($event.target.value)" [value]="selectedCategoryTypeID">
+                      <option
+                        *ngFor="let issueCategory of selectedIssueClass.Categories"
+                        [value]="issueCategory.AssetIssueCategoryTypeID"
+                        >{{ issueCategory.CategoryDesc }}
+                      </option>
+                    </select>
+                  </ng-container>
+                  <ng-template #elseNoCategoriesTemplate> No categories </ng-template>
+                </div>
+              </ng-container>
+            </ng-container>
+            <ng-template #workflowFormCreation>
+              <atx-create-category-settings
+                [workflowForm]="wffService.workflowForm$ | async"
+                [issueClasses]="issueClasses"
+                [assetClassTypes]="assetClassTypes"
+                [validationMessages]="validationMessages"
+                [showValidationMessages]="showValidationMessages"
+                (assetClassTypesChanged)="assetClassTypesChanged($event)"
+              ></atx-create-category-settings>
+            </ng-template>
+
+            <ng-template #elseNoSelectedIssueClass>
+              <div class="select-settings"><label>Client Name: </label> No issue classes</div>
+              <div class="select-settings"><label>Filter by Class: </label> No issue classes</div>
+              <div class="select-settings"><label>Open Category: </label> No categories</div>
+            </ng-template>
+          </ng-template>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</ng-container>

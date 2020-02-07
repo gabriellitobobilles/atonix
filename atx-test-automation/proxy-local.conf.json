@@ -1,0 +1,9 @@
+{
+    "/Services/*":{
+        "target":"http://localhost:65354",
+        "secure":false,
+        "logLevel":"debug",
+        "changeOrigin":true
+    }
+
+}

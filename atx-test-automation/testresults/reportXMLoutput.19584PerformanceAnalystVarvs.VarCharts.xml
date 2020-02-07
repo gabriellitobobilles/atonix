@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="4" time="195.69">
+ <testsuite name="19584: Performance Analyst -Var vs. Var Charts" timestamp="2020-01-13T20:48:44" hostname="localhost" time="195.69" errors="0" tests="4" skipped="0" disabled="0" failures="0">
+  <testcase classname="19584: Performance Analyst -Var vs. Var Charts" name="Step 1: Change scale of axes, click ok, verify" time="39.33" />
+  <testcase classname="19584: Performance Analyst -Var vs. Var Charts" name="Step 2: Change scale of axes back to auto, click ok, verify" time="3.248" />
+  <testcase classname="19584: Performance Analyst -Var vs. Var Charts" name="Step 3: Download data to excel" time="54.686" />
+  <testcase classname="19584: Performance Analyst -Var vs. Var Charts" name="Step 4: Expand chart to full screen" time="60.072" />
+ </testsuite>
+</testsuites>

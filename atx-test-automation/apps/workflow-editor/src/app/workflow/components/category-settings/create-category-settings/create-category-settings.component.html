@@ -1,0 +1,39 @@
+<form [formGroup]="workflowForm">
+  <div class="select-settings">
+    <label>Category Name</label> <input type="text" placeholder="Category Name" formControlName="categoryDescription" />
+    <ng-container *ngIf="showValidationMessages && validationMessages['categoryDescription']">
+      <mat-error class="invalid"> {{ validationMessages['categoryDescription'] }} </mat-error>
+    </ng-container>
+  </div>
+  <div class="select-settings">
+    <label>Issue Class</label>
+    <div class="white-select">
+      <mat-select class="white-background" formControlName="issueClassID">
+        <mat-option class="white-background" *ngFor="let issueClass of issueClasses" [value]="issueClass.IssueClassTypeID">{{
+          issueClass.IssueClassDesc
+        }}</mat-option>
+      </mat-select>
+    </div>
+    <ng-container *ngIf="validationMessages['issueClassID']">
+      <p>{{ validationMessages['issueClassID'] }}</p>
+    </ng-container>
+  </div>
+  <div class="select-settings">
+    <label>Asset Classes</label>
+    <div class="white-select">
+      <mat-select multiple class="white-background" formControlName="assetClassTypes">
+        <mat-option class="white-background" (onSelectionChange)="assetClassSelectionChanged($event, -1)" [value]="-1">
+          All Class Types
+        </mat-option>
+        <mat-option
+          class="white-background"
+          (onSelectionChange)="assetClassSelectionChanged($event, assetClass.AssetClassTypeID)"
+          *ngFor="let assetClass of assetClassTypes"
+          [value]="assetClass.AssetClassTypeID"
+        >
+          {{ assetClass.AssetClassTypeDesc }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+</form>
