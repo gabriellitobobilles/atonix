@@ -76,7 +76,7 @@ npm run start
 `ng g lib AssetTree --prefix=atx --unit-test-runner=jest`
 
 ## Tests
-##test3
+
 - `npm run test:coverage` will run test coverage. Look at the console output, and check this html file for a visual look at your test coverage: Atonix.Web.Sites/coverage/index.html
 - `npm run test:snapshot` will update all snapshots in the tests. If you are running this command be sure that failing snapshots are the right one now
 - `npm run test:watch watch` jest tests
